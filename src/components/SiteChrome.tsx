@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Play, Mail, Phone, MapPin, Menu, X } from "lucide-react";
-import logo from "@/assets/creative-works-logo.png.asset.json";
 
 const NAV = [
   { label: "Services", to: "/services" },
@@ -26,12 +25,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 md:py-5">
-        <Link to="/" className="group flex min-w-0 items-center gap-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 md:py-4">
+        <Link to="/" className="group flex shrink-0 items-center gap-3 self-center">
           <img
-            src={logo.url}
+            src="/public/cw-logo.png"
             alt="Creative Works logo"
-            className="h-8 w-auto shrink-0 transition-transform duration-500 group-hover:scale-105 md:h-9"
+            className="block h-16 w-auto shrink-0 transition-transform duration-500 group-hover:scale-105 md:h-20"
           />
         </Link>
 
@@ -137,7 +136,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logo.url} alt="Creative Works logo" className="h-11 w-auto" />
+            <img src="/public/cw-logo.png" alt="Creative Works logo" className="h-11 w-auto" />
             <span className="font-display text-lg font-bold text-foreground">
               Communications
             </span>
