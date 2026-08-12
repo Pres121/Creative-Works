@@ -28,7 +28,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 md:py-4">
         <Link to="/" className="group flex shrink-0 items-center gap-3 self-center">
           <img
-            src="/public/cw-logo.png"
+            src="/cw-logo.png"
             alt="Creative Works logo"
             className="block h-16 w-auto shrink-0 transition-transform duration-500 group-hover:scale-105 md:h-20"
           />
@@ -136,15 +136,13 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src="/public/cw-logo.png" alt="Creative Works logo" className="h-11 w-auto" />
+            <img src="/cw-logo.png" alt="Creative Works logo" className="h-11 w-auto" />
             <span className="font-display text-lg font-bold text-foreground">
               Communications
             </span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Established in 2002 and re-registered in 2023 (TPIN: 31659272), we produce high quality
-            multimedia products in accordance with professional ethics and standards — built on
-            professionalism, quality, affordability and customization.
+            Established in 2002 and re-registered in 2023 (TPIN: 31659272)
           </p>
         </div>
 
@@ -185,7 +183,18 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-border px-6 py-6 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Creative Works Communications. Multimedia production since 2002.
+        <div>© {new Date().getFullYear()} Creative Works Communications. Multimedia production since 2002.</div>
+        <div className="mt-2">
+          Made with love by{' '}
+          <a
+            href="https://sure-defense-systems.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-brand hover:text-foreground"
+          >
+            SureDefense Systems — Cybersecurity Services
+          </a>
+        </div>
       </div>
     </footer>
   );
