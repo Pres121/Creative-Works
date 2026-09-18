@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
@@ -223,8 +223,8 @@ function AboutPage() {
                     <div>
                       <dt className="text-xs uppercase tracking-widest text-muted-foreground">Email</dt>
                       <dd className="mt-2 text-sm">
-                        <a href="mailto:chimzere@gmail.com" className="hover:text-brand">
-                          chimzere@gmail.com
+                        <a href="mailto:creativeworks@gmail.com" className="hover:text-brand">
+                          creativeworks@gmail.com
                         </a>
                       </dd>
                     </div>
@@ -282,7 +282,7 @@ function ContactForm() {
     }
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
     if (!validate()) return;
@@ -365,12 +365,7 @@ function ContactForm() {
         {errors.message ? <p className="mt-1 text-sm text-destructive">{errors.message}</p> : null}
       </label>
 
-      {error ? <p className="text-sm text-destructive">{error}</p> : null}
-      {RECAPTCHA_SITE_KEY ? (
-        <p className="mt-1 text-xs text-muted-foreground">reCAPTCHA is enabled.</p>
-      ) : (
-        <p className="mt-1 text-xs text-muted-foreground">reCAPTCHA not configured (set VITE_RECAPTCHA_SITE_KEY to enable).</p>
-      )}
+      
 
       <button
         type="submit"

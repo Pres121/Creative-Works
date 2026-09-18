@@ -1,14 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import {
-  ArrowUpRight,
-  Camera,
-  Clapperboard,
-  Film,
-  Search,
-  Sparkles,
-  Users,
-} from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
@@ -84,22 +75,18 @@ const GALLERY: Shot[] = [
 
 const FEATURES = [
   {
-    icon: Camera,
     title: "Professionalism",
     body: "Over two decades producing multimedia in accordance with professional ethics and standards — a crew that has stood the test of time since 2002.",
   },
   {
-    icon: Clapperboard,
     title: "Quality",
     body: "TV programmes, documentaries, adverts, event videography and live streaming, all shot on the latest state-of-the-art equipment.",
   },
   {
-    icon: Sparkles,
     title: "Affordability",
     body: "Converging creativity, technology and professionalism so clients effortlessly and affordably access the highest quality multimedia services.",
   },
   {
-    icon: Users,
     title: "Customization",
     body: "A creative, dynamic and friendly team that caters for all — every production shaped around the customer's brief and budget.",
   },
@@ -206,7 +193,6 @@ function Index() {
             className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:items-center"
           >
             <div className="flex flex-1 items-center gap-3 rounded-full glass-brand px-5 py-3 transition-shadow duration-300 focus-within:ring-4 focus-within:ring-brand/15">
-              <Search className="size-4 shrink-0 text-brand" />
               <input
                 type="search"
                 value={query}
@@ -459,11 +445,10 @@ function Index() {
                 className={i % 2 === 1 ? "sm:mt-8" : ""}
               >
                 <article className="soft-card h-full rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/10">
-                    <f.icon className="size-5 text-brand" />
+                  <span className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-brand">
+                    {f.title}
                   </span>
-                  <h3 className="mt-6 text-xl font-bold">{f.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
                 </article>
               </Reveal>
             ))}
@@ -500,8 +485,7 @@ function AssetCard({
       />
 
       {badge && (
-        <span className="absolute left-4 top-4 flex items-center gap-2 rounded-full brand-gradient px-3 py-1.5 text-xs font-medium text-brand-foreground">
-          <Film className="size-3.5" />
+        <span className="absolute left-4 top-4 rounded-full brand-gradient px-3 py-1.5 text-xs font-medium text-brand-foreground">
           {badge}
         </span>
       )}
@@ -511,10 +495,7 @@ function AssetCard({
           <span className="block text-xs font-semibold">{title}</span>
           <span className="block text-[10px] text-muted-foreground">{meta}</span>
         </span>
-        <span className="flex items-center gap-2 text-xs font-semibold text-brand">
-          Case study
-          <ArrowUpRight className="size-3.5" />
-        </span>
+        <span className="text-xs font-semibold text-brand">Case study</span>
       </figcaption>
     </figure>
   );

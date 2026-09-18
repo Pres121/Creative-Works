@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { CalendarDays, Check, Mail, Phone, User } from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
@@ -36,7 +35,7 @@ const SHOOT_TYPES = [
   "Aerial / Drone",
 ];
 
-const BUDGETS = ["Under $2k", "$2k – $5k", "$5k – $10k", "$10k+"];
+const BUDGETS = ["Under MK50,000", "MK100,000 – MK300,000", "MK350,000 – MK500,000", "MK600,000+"];
 
 const inputClass =
   "w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground transition-all duration-300 placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15";
@@ -74,8 +73,8 @@ function BookPage() {
       <section className="mx-auto max-w-3xl px-6 pb-24">
         {sent ? (
           <Reveal from="scale" className="soft-card rounded-3xl p-10 text-center">
-            <span className="mx-auto flex size-14 items-center justify-center rounded-2xl brand-gradient">
-              <Check className="size-6 text-brand-foreground" />
+            <span className="mx-auto inline-flex rounded-2xl brand-gradient px-4 py-3 text-sm font-bold text-brand-foreground">
+              Sent
             </span>
             <h2 className="mt-6 text-2xl font-bold">
               Thanks{name ? `, ${name.split(" ")[0]}` : ""} — request received.
@@ -104,8 +103,8 @@ function BookPage() {
             <form onSubmit={handleSubmit} className="soft-card space-y-6 rounded-3xl p-8">
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    <User className="size-3.5 text-brand" /> Full name
+                  <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Full name
                   </span>
                   <input
                     required
@@ -116,8 +115,8 @@ function BookPage() {
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    <Mail className="size-3.5 text-brand" /> Email
+                  <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Email
                   </span>
                   <input
                     required
@@ -127,14 +126,14 @@ function BookPage() {
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    <Phone className="size-3.5 text-brand" /> Phone
+                  <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Phone
                   </span>
-                  <input type="tel" className={inputClass} placeholder="+27 82 000 0000" />
+                  <input type="tel" className={inputClass} placeholder="+265 888 16755" />
                 </label>
                 <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    <CalendarDays className="size-3.5 text-brand" /> Preferred date
+                  <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Preferred date
                   </span>
                   <input required type="date" className={inputClass} />
                 </label>
@@ -188,7 +187,7 @@ function BookPage() {
                 <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                   Location
                 </span>
-                <input className={inputClass} placeholder="Cape Town, or a venue name" />
+                <input className={inputClass} placeholder="Blantyre, or a venue name" />
               </label>
 
               <label className="block">

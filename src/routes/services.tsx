@@ -1,15 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import {
-  Camera,
-  Clapperboard,
-  Radio,
-  PenTool,
-  Check,
-  Tv,
-  Video,
-  Signal,
-} from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
@@ -41,7 +31,6 @@ const FILTERS = ["All", "Video", "Photography", "Audio", "Design"] as const;
 type Service = {
   name: string;
   type: (typeof FILTERS)[number];
-  icon: typeof Tv;
   blurb: string;
   includes: string[];
 };
@@ -50,7 +39,6 @@ const SERVICES: Service[] = [
   {
     name: "TV Programmes & Documentaries",
     type: "Video",
-    icon: Tv,
     blurb:
       "Broadcast-standard programmes and documentary storytelling, produced end to end for local and international broadcasters.",
     includes: ["Research & scripting", "Field production", "Editing & grading", "Broadcast masters"],
@@ -58,7 +46,6 @@ const SERVICES: Service[] = [
   {
     name: "TV & Video Adverts",
     type: "Video",
-    icon: Clapperboard,
     blurb:
       "Commercials and TV spots built around a clear message — including multi-language versions such as Chichewa and English.",
     includes: ["Concept development", "Direction & filming", "Multi-language versions", "Social cutdowns"],
@@ -66,7 +53,6 @@ const SERVICES: Service[] = [
   {
     name: "Event Videography",
     type: "Video",
-    icon: Video,
     blurb:
       "Coverage of launches, workshops, conferences and other corporate functions, delivered as highlight and full-length edits.",
     includes: ["Multi-camera crew", "Professional audio", "Highlight film", "Full event edit"],
@@ -74,7 +60,6 @@ const SERVICES: Service[] = [
   {
     name: "Live Streaming",
     type: "Video",
-    icon: Signal,
     blurb:
       "Reliable live broadcast of corporate events and functions to online audiences, with an on-site technical team.",
     includes: ["Vision mixing", "Connectivity setup", "Platform delivery", "Recorded archive"],
@@ -82,7 +67,6 @@ const SERVICES: Service[] = [
   {
     name: "Professional Photography",
     type: "Photography",
-    icon: Camera,
     blurb:
       "Event, corporate, portrait and documentary photography using the latest state-of-the-art equipment.",
     includes: ["On-location shoots", "Studio portraits", "Editing & retouching", "Print-ready files"],
@@ -90,7 +74,6 @@ const SERVICES: Service[] = [
   {
     name: "Radio & Audio Adverts",
     type: "Audio",
-    icon: Radio,
     blurb:
       "Scripted, voiced and mixed radio spots and audio adverts ready for station delivery.",
     includes: ["Scriptwriting", "Voice-over casting", "Sound design", "Station-ready masters"],
@@ -98,7 +81,6 @@ const SERVICES: Service[] = [
   {
     name: "Graphic Design",
     type: "Design",
-    icon: PenTool,
     blurb:
       "Brand and campaign design work that keeps your print and digital materials consistent with your films.",
     includes: ["Logos & identity", "Posters & banners", "Digital artwork", "Campaign collateral"],
@@ -174,9 +156,6 @@ function ServicesPage() {
                 className="soft-card h-full rounded-3xl p-7 transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/10">
-                    <s.icon className="size-5 text-brand" />
-                  </span>
                   <span className="rounded-full bg-brand/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-brand">
                     {s.type}
                   </span>
@@ -185,8 +164,8 @@ function ServicesPage() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
                 <ul className="mt-4 space-y-1.5">
                   {s.includes.map((i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Check className="size-3.5 shrink-0 text-brand" />
+                    <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
                       {i}
                     </li>
                   ))}
