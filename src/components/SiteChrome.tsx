@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Play, Mail, Phone, MapPin, Menu, X } from "lucide-react";
+import { ShowreelModal } from "@/components/ShowreelModal";
 
 const NAV = [
   { label: "Services", to: "/services" },
@@ -10,6 +11,7 @@ const NAV = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [showreelOpen, setShowreelOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
@@ -24,102 +26,117 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 md:py-4">
-        <Link to="/" className="group flex shrink-0 items-center gap-3 self-center">
-          <img
-            src="/cw-logo.png"
-            alt="Creative Works logo"
-            className="block h-16 w-auto shrink-0 transition-transform duration-500 group-hover:scale-105 md:h-20"
-          />
-        </Link>
-
-        <nav className="hidden items-center gap-9 text-sm text-muted-foreground md:flex">
-          {NAV.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeProps={{ className: "text-brand font-semibold after:scale-x-100" }}
-              className="relative transition-colors duration-300 hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex shrink-0 items-center gap-3">
-          <button
-            aria-label="Showreel"
-            className="hidden size-9 items-center justify-center rounded-full glass-brand text-brand btn-motion hover:text-foreground sm:flex"
-          >
-            <Play className="size-4" />
-          </button>
-          <Link
-            to="/book"
-            className="hidden rounded-full brand-gradient px-5 py-2.5 text-sm font-semibold text-brand-foreground btn-motion brand-glow sm:inline-flex"
-          >
-            Book A Shoot
+    <>
+      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 md:py-4">
+          <Link to="/" className="group flex shrink-0 items-center gap-3 self-center">
+            <img
+              src="/cw-logo.png"
+              alt="Creative Works logo"
+              className="block h-16 w-auto shrink-0 transition-transform duration-500 group-hover:scale-105 md:h-20"
+            />
           </Link>
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="relative flex size-10 items-center justify-center rounded-full glass-brand text-brand btn-motion md:hidden"
-          >
-            <Menu
-              className={`absolute size-5 transition-all duration-300 ${
-                open ? "rotate-90 scale-50 opacity-0" : "rotate-0 scale-100 opacity-100"
-              }`}
-            />
-            <X
-              className={`absolute size-5 transition-all duration-300 ${
-                open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-50 opacity-0"
-              }`}
-            />
-          </button>
-        </div>
-      </div>
+          <nav className="hidden items-center gap-9 text-sm text-muted-foreground md:flex">
+            {NAV.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeProps={{ className: "text-brand font-semibold after:scale-x-100" }}
+                className="relative transition-colors duration-300 hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
 
-      {/* Mobile overlay menu */}
-      <div
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 top-[65px] z-40 bg-foreground/20 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      />
-      <div
-        className={`absolute inset-x-0 top-full z-50 origin-top overflow-hidden border-b border-border bg-background shadow-xl transition-[max-height,opacity] duration-400 ease-out md:hidden ${
-          open ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <nav className="flex flex-col gap-1 px-6 py-5">
-          {NAV.map((l, i) => (
+          <div className="flex shrink-0 items-center gap-3">
+            <button
+              onClick={() => setShowreelOpen(true)}
+              aria-label="Showreel"
+              title="Watch Showreel"
+              className="hidden size-9 items-center justify-center rounded-full glass-brand text-brand btn-motion hover:text-foreground sm:flex"
+            >
+              <Play className="size-4 fill-current" />
+            </button>
             <Link
-              key={l.to}
-              to={l.to}
-              activeProps={{ className: "text-brand bg-brand/5" }}
-              style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
-              className={`rounded-xl px-4 py-3 text-base font-medium text-foreground transition-all duration-300 hover:bg-brand/5 hover:text-brand ${
+              to="/book"
+              className="hidden rounded-full brand-gradient px-5 py-2.5 text-sm font-semibold text-brand-foreground btn-motion brand-glow sm:inline-flex"
+            >
+              Book A Shoot
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              className="relative flex size-10 items-center justify-center rounded-full glass-brand text-brand btn-motion md:hidden"
+            >
+              <Menu
+                className={`absolute size-5 transition-all duration-300 ${
+                  open ? "rotate-90 scale-50 opacity-0" : "rotate-0 scale-100 opacity-100"
+                }`}
+              />
+              <X
+                className={`absolute size-5 transition-all duration-300 ${
+                  open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-50 opacity-0"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile overlay menu */}
+        <div
+          onClick={() => setOpen(false)}
+          className={`fixed inset-0 top-[65px] z-40 bg-foreground/20 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+            open ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
+        />
+        <div
+          className={`absolute inset-x-0 top-full z-50 origin-top overflow-hidden border-b border-border bg-background shadow-xl transition-[max-height,opacity] duration-400 ease-out md:hidden ${
+            open ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="flex flex-col gap-1 px-6 py-5">
+            {NAV.map((l, i) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeProps={{ className: "text-brand bg-brand/5" }}
+                style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
+                className={`rounded-xl px-4 py-3 text-base font-medium text-foreground transition-all duration-300 hover:bg-brand/5 hover:text-brand ${
+                  open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <button
+              onClick={() => {
+                setOpen(false);
+                setShowreelOpen(true);
+              }}
+              className="flex items-center justify-center gap-2 rounded-xl border border-brand/20 bg-brand/5 px-4 py-3 text-sm font-semibold text-brand transition-all hover:bg-brand/10"
+            >
+              <Play className="size-4 fill-current" /> Watch Showreel
+            </button>
+            <Link
+              to="/book"
+              style={{ transitionDelay: open ? `${80 + NAV.length * 60}ms` : "0ms" }}
+              className={`mt-2 rounded-full brand-gradient px-5 py-3 text-center text-sm font-semibold text-brand-foreground btn-motion brand-glow transition-all duration-300 ${
                 open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
               }`}
             >
-              {l.label}
+              Book A Shoot
             </Link>
-          ))}
-          <Link
-            to="/book"
-            style={{ transitionDelay: open ? `${80 + NAV.length * 60}ms` : "0ms" }}
-            className={`mt-3 rounded-full brand-gradient px-5 py-3 text-center text-sm font-semibold text-brand-foreground btn-motion brand-glow transition-all duration-300 ${
-              open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
-            }`}
-          >
-            Book A Shoot
-          </Link>
-        </nav>
-      </div>
-    </header>
+          </nav>
+        </div>
+      </header>
+
+      <ShowreelModal isOpen={showreelOpen} onClose={() => setShowreelOpen(false)} />
+    </>
   );
 }
 

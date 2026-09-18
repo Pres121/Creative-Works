@@ -5,25 +5,21 @@ import {
   Camera,
   Clapperboard,
   Film,
+  Maximize2,
   Search,
   Sparkles,
   Users,
+  X,
+  Radio,
+  Signal,
+  Tv,
 } from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
-import g1 from "@/assets/g1.jpg";
-import g2 from "@/assets/g2.jpg";
-import g3 from "@/assets/g3.jpg";
-import g4 from "@/assets/g4.jpg";
-import g5 from "@/assets/g5.jpg";
-import g6 from "@/assets/g6.jpg";
-import g7 from "@/assets/g7.jpg";
-import g8 from "@/assets/g8.jpg";
-import g9 from "@/assets/g9.jpg";
-import g10 from "@/assets/g10.jpg";
-import g11 from "@/assets/g11.jpg";
-import g12 from "@/assets/g12.jpg";
+import { PORTFOLIO_GALLERY, PRODUCTIONS, Shot } from "@/assets/portfolio-images";
+import { ImageLightbox } from "@/components/ImageLightbox";
+import { HeroVisualCarousel } from "@/components/HeroVisualCarousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,13 +28,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Creative Works is a photography and videography team crafting brand films, campaign stills and event coverage. View the portfolio and book a shoot.",
+          "Creative Works Communications is a photography and videography team crafting brand films, campaign stills, documentaries and event coverage in Malawi and beyond. View the portfolio and book a shoot.",
       },
       { property: "og:title", content: "Creative Works — Photography & Videography" },
       {
         property: "og:description",
         content:
-          "Brand films, campaign stills and event coverage by Creative Works. View the portfolio and book a shoot.",
+          "Brand films, campaign stills and event coverage by Creative Works Communications. View the portfolio and book a shoot.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -49,37 +45,12 @@ export const Route = createFileRoute("/")({
 
 const CATEGORIES = [
   "All",
-  "Weddings",
   "Brand Films",
   "Portraits",
-  "Architecture",
   "Events",
   "Editorial",
   "Products",
   "Travel",
-];
-
-type Shot = {
-  src: string;
-  alt: string;
-  h: string;
-  category: string;
-  service: "Photography" | "Videography" | "Aerial";
-};
-
-const GALLERY: Shot[] = [
-  { src: g1, alt: "Interior shoot for a boutique hotel", h: "h-56", category: "Architecture", service: "Photography" },
-  { src: g2, alt: "City street scene from a documentary shoot", h: "h-64", category: "Editorial", service: "Videography" },
-  { src: g3, alt: "Architectural facade study", h: "h-52", category: "Architecture", service: "Photography" },
-  { src: g4, alt: "Wildlife portrait captured on location", h: "h-72", category: "Travel", service: "Photography" },
-  { src: g5, alt: "Coastal frame from a travel film", h: "h-56", category: "Travel", service: "Aerial" },
-  { src: g6, alt: "Studio fashion portrait with red scarf", h: "h-72", category: "Portraits", service: "Photography" },
-  { src: g7, alt: "Colour-graded still from a brand film", h: "h-52", category: "Brand Films", service: "Videography" },
-  { src: g8, alt: "Abstract lighting test frame", h: "h-52", category: "Brand Films", service: "Videography" },
-  { src: g9, alt: "Macro texture study", h: "h-44", category: "Products", service: "Photography" },
-  { src: g10, alt: "Sailing sequence from a lifestyle campaign", h: "h-64", category: "Events", service: "Aerial" },
-  { src: g11, alt: "Tropical foliage detail shot", h: "h-44", category: "Weddings", service: "Photography" },
-  { src: g12, alt: "Mural backdrop for an editorial session", h: "h-48", category: "Editorial", service: "Photography" },
 ];
 
 const FEATURES = [
@@ -110,61 +81,56 @@ const CLIENTS = [
     name: "Malawi Liverpool Wellcome Programme",
     work: "Video documentaries & photography — over 5 years",
   },
-  { name: "Baylor College of Medicine", work: "TV spots" },
+  { name: "Baylor College of Medicine", work: "TV spots & health films" },
   { name: "Illovo Sugar Malawi", work: "Events coverage, live streaming & photography" },
-  { name: "Aljazeera Television", work: "Supplying local news" },
+  { name: "Aljazeera Television", work: "Supplying local news footage" },
   { name: "'The Boy Who Harnessed The Wind'", work: "Hollywood feature production support" },
   { name: "Save the Children", work: "Field documentaries & campaign films" },
 ];
 
 const OFFERINGS = [
-  "TV programs, documentaries and adverts",
-  "Event videography for launches, workshops and corporate functions",
-  "Graphic designing",
-  "Radio adverts",
-  "Professional photography",
-  "Live streaming",
-  "Audio and video adverts",
+  { title: "TV programs & documentaries", icon: Tv },
+  { title: "Event videography & corporate functions", icon: VideoIcon },
+  { title: "Graphic designing & campaign collateral", icon: Sparkles },
+  { title: "Radio & audio adverts", icon: Radio },
+  { title: "Professional photography & studio stills", icon: Camera },
+  { title: "Multi-camera live streaming", icon: Signal },
 ];
 
+function VideoIcon(props: any) {
+  return <Film {...props} />;
+}
 
 const SERVICES = ["Photography", "Videography", "Aerial"] as const;
-
-type Production = {
-  src: string;
-  alt: string;
-  title: string;
-  meta: string;
-  tab: string;
-  badge?: string;
-};
-
-const PRODUCTIONS: Production[] = [
-  { src: g7, alt: "Colour-graded still from a brand film", title: "Nova Skincare", meta: "Campaign film · 2026", tab: "Brand Films" },
-  { src: g9, alt: "Macro texture study for a product shoot", title: "Atelier Ceramics", meta: "Product stills · 2026", tab: "Brand Films" },
-  { src: g8, alt: "Abstract lighting frame from a studio shoot", title: "Creative Works Showreel", meta: "Direction & cinematography", tab: "Brand Films", badge: "Showreel 2026" },
-  { src: g11, alt: "Tropical foliage detail from a wedding day", title: "Sena & Michael", meta: "Wedding film · Cape Town", tab: "Weddings" },
-  { src: g6, alt: "Studio fashion portrait with red scarf", title: "Maison No.4", meta: "Bridal editorial", tab: "Weddings" },
-  { src: g10, alt: "Sailing sequence from a lifestyle campaign", title: "Harbour Vows", meta: "Coastal wedding · Aerial", tab: "Weddings", badge: "Aerial" },
-  { src: g2, alt: "City street scene from a documentary shoot", title: "Street Notes", meta: "Editorial series", tab: "Editorial" },
-  { src: g12, alt: "Mural backdrop for an editorial session", title: "Colour Field", meta: "Magazine spread", tab: "Editorial" },
-  { src: g1, alt: "Interior shoot for a boutique hotel", title: "Hotel Marnie", meta: "Interiors editorial", tab: "Editorial", badge: "Feature" },
-];
 
 function Index() {
   const [category, setCategory] = useState("All");
   const [service, setService] = useState<(typeof SERVICES)[number]>("Photography");
   const [query, setQuery] = useState("");
   const [featuredTab, setFeaturedTab] = useState("Brand Films");
+  const [activeShot, setActiveShot] = useState<Shot | null>(null);
+
+  // Calculate item counts for category pills
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: PORTFOLIO_GALLERY.length };
+    CATEGORIES.forEach((cat) => {
+      if (cat !== "All") {
+        counts[cat] = PORTFOLIO_GALLERY.filter((s) => s.category === cat).length;
+      }
+    });
+    return counts;
+  }, []);
 
   const shots = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return GALLERY.filter(
+    return PORTFOLIO_GALLERY.filter(
       (s) =>
         (category === "All" || s.category === category) &&
-        s.service === service &&
+        (service === "Photography" || s.service === service || service === "Aerial" ? s.service === service : true) &&
         (q === "" ||
+          s.title.toLowerCase().includes(q) ||
           s.alt.toLowerCase().includes(q) ||
+          (s.client && s.client.toLowerCase().includes(q)) ||
           s.category.toLowerCase().includes(q)),
     );
   }, [category, service, query]);
@@ -183,38 +149,48 @@ function Index() {
 
       {/* Hero */}
       <section className="relative overflow-hidden px-6 pt-16 pb-14 text-center">
-        <div className="pointer-events-none absolute left-1/2 top-0 size-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-3xl" />
-        <div className="relative mx-auto max-w-3xl">
+        <div className="pointer-events-none absolute left-1/2 top-0 size-[48rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
               Multimedia Production Since 2002 · Blantyre, Malawi
             </p>
-            <h1 className="mt-5 text-5xl font-bold leading-[1.05] text-foreground md:text-6xl">
+            <h1 className="mt-5 text-5xl font-bold leading-[1.05] text-foreground md:text-6xl lg:text-7xl">
               We Film The Stories
-              <br />Your Brand Tells.
+              <br />
+              <span className="bg-gradient-to-r from-brand via-brand-soft to-amber-500 bg-clip-text text-transparent">
+                Your Brand Tells.
+              </span>
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
               Creative Works Communications produces high quality multimedia — documentaries, TV
               adverts, event videography, live streaming and professional photography — for clients
               across Malawi and beyond.
             </p>
           </Reveal>
 
-
           <Reveal
             delay={120}
             className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <div className="flex flex-1 items-center gap-3 rounded-full glass-brand px-5 py-3 transition-shadow duration-300 focus-within:ring-4 focus-within:ring-brand/15">
+            <div className="relative flex flex-1 items-center gap-3 rounded-full glass-brand px-5 py-3 transition-shadow duration-300 focus-within:ring-4 focus-within:ring-brand/15">
               <Search className="size-4 shrink-0 text-brand" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search the portfolio — weddings, brand films, portraits"
+                placeholder="Search portfolio — MLW, Illovo, Drone, Live Stream"
                 aria-label="Search the portfolio"
                 className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
               />
+              {query && (
+                <button
+                  onClick={() => setQuery("")}
+                  className="size-5 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground"
+                >
+                  <X className="size-3" />
+                </button>
+              )}
             </div>
             <Link
               to="/book"
@@ -224,12 +200,12 @@ function Index() {
             </Link>
           </Reveal>
 
-          <Reveal delay={220} className="mt-10 flex items-center justify-center gap-8 text-sm">
+          <Reveal delay={220} className="mt-8 flex items-center justify-center gap-8 text-sm">
             {SERVICES.map((t) => (
               <button
                 key={t}
                 onClick={() => setService(t)}
-                className={`relative pb-1 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-brand after:transition-transform after:duration-300 ${
+                className={`relative pb-1 font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-brand after:transition-transform after:duration-300 ${
                   service === t
                     ? "font-semibold text-brand after:scale-x-100"
                     : "text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100"
@@ -239,53 +215,97 @@ function Index() {
               </button>
             ))}
           </Reveal>
+
+          {/* Hero Visual Reel Showcase Banner */}
+          <HeroVisualCarousel onSelectShot={setActiveShot} portfolioShots={PORTFOLIO_GALLERY} />
         </div>
       </section>
 
-
       {/* Gallery */}
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <Reveal className="flex flex-wrap justify-center gap-2 border-t border-border pt-8">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c}
-              onClick={() => setCategory(c)}
-              className={`rounded-full px-4 py-1.5 text-xs font-medium btn-motion ${
-                category === c
-                  ? "brand-gradient tab-pop text-brand-foreground"
-                  : "border border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {c}
-            </button>
-          ))}
-        </Reveal>
+        <div className="flex flex-col items-center gap-4 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">Production Stills</p>
+          <h2 className="text-3xl font-bold md:text-4xl">Explore The Portfolio</h2>
+
+          <Reveal className="flex flex-wrap justify-center gap-2 border-t border-border pt-6">
+            {CATEGORIES.map((c) => (
+              <button
+                key={c}
+                onClick={() => setCategory(c)}
+                className={`rounded-full px-4 py-1.5 text-xs font-medium btn-motion ${
+                  category === c
+                    ? "brand-gradient tab-pop text-brand-foreground"
+                    : "border border-border text-muted-foreground hover:text-foreground hover:border-brand/30"
+                }`}
+              >
+                {c} <span className="opacity-75 font-normal">({categoryCounts[c] ?? 0})</span>
+              </button>
+            ))}
+          </Reveal>
+
+          <div className="text-xs text-muted-foreground">
+            Showing <strong className="text-foreground">{shots.length}</strong> {service.toLowerCase()} production stills
+            {category !== "All" && ` in ${category}`}
+            {query && ` matching "${query}"`}
+          </div>
+        </div>
 
         {shots.length === 0 ? (
-          <p className="mt-16 text-center text-sm text-muted-foreground page-enter">
-            No {service.toLowerCase()} work in “{category}” yet — try another filter.
-          </p>
+          <div className="mt-16 rounded-3xl border border-dashed border-border p-12 text-center text-sm text-muted-foreground page-enter">
+            <p className="text-base font-semibold text-foreground">No matches found</p>
+            <p className="mt-1 text-xs">Try selecting another service type or clear your search.</p>
+            <button
+              onClick={() => {
+                setCategory("All");
+                setQuery("");
+              }}
+              className="mt-4 rounded-full border border-border px-4 py-2 text-xs font-semibold text-brand hover:border-brand"
+            >
+              Reset Filters
+            </button>
+          </div>
         ) : (
           <div
             key={`${category}-${service}-${query}`}
-            className="mt-8 grid grid-cols-2 gap-4 page-enter md:grid-cols-4"
+            className="mt-8 grid grid-cols-1 gap-4 page-enter sm:grid-cols-2 md:grid-cols-4"
           >
             {columns.map((col, i) => (
               <div key={i} className="flex flex-col gap-4">
                 {col.map((img) => (
-                  <figure key={img.alt} className="group relative overflow-hidden rounded-2xl">
+                  <figure
+                    key={img.id}
+                    onClick={() => setActiveShot(img)}
+                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-brand/40"
+                  >
                     <img
                       src={img.src}
                       alt={img.alt}
                       loading="lazy"
-                      className={`w-full ${img.h} object-cover transition-transform duration-500 group-hover:scale-105`}
+                      className={`w-full ${img.h} object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
                     />
-                    <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-2 items-center justify-between bg-gradient-to-t from-black/70 to-transparent p-3 text-xs opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="text-white/85">{img.category}</span>
-                      <span className="rounded-full brand-gradient px-2 py-0.5 font-semibold text-brand-foreground">
-                        View
+
+                    {/* Top badge */}
+                    <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                      <span className="rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold text-white backdrop-blur-md">
+                        {img.service}
                       </span>
-                    </figcaption>
+                    </div>
+
+                    {/* Hover detail overlay */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 text-xs opacity-0 transition-all duration-300 group-hover:opacity-100">
+                      <span className="font-bold text-white text-base leading-snug">{img.title}</span>
+                      {img.client && (
+                        <span className="text-white/80 text-[11px] mt-0.5 font-medium">Client: {img.client}</span>
+                      )}
+                      <div className="mt-3 flex items-center justify-between">
+                        <span className="rounded-full bg-brand/30 px-2.5 py-0.5 font-medium text-white text-[10px] backdrop-blur-md">
+                          {img.category}
+                        </span>
+                        <span className="flex items-center gap-1 rounded-full brand-gradient px-2.5 py-1 font-semibold text-brand-foreground text-[10px] shadow-sm">
+                          <Maximize2 className="size-3" /> Inspect
+                        </span>
+                      </div>
+                    </div>
                   </figure>
                 ))}
               </div>
@@ -299,18 +319,20 @@ function Index() {
               setCategory("All");
               setQuery("");
             }}
-            className="rounded-full brand-gradient px-7 py-3 text-sm font-semibold text-brand-foreground btn-motion brand-glow"
+            className="rounded-full brand-gradient px-8 py-3.5 text-sm font-semibold text-brand-foreground btn-motion brand-glow"
           >
             See All Work
           </button>
         </div>
       </section>
 
-
       {/* Recent productions */}
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-4xl font-bold md:text-5xl">Recent Productions</h2>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">Portfolio Spotlight</p>
+            <h2 className="mt-2 text-4xl font-bold md:text-5xl">Featured Productions</h2>
+          </div>
           <div className="flex gap-2">
             {["Brand Films", "Weddings", "Editorial"].map((t) => (
               <button
@@ -333,7 +355,6 @@ function Index() {
             <AssetCard key={p.title} {...p} />
           ))}
         </div>
-
       </section>
 
       {/* About */}
@@ -391,11 +412,13 @@ function Index() {
             <Reveal from="right" delay={200}>
               <article className="soft-card rounded-3xl p-8">
                 <h3 className="text-xl font-bold">What We Have For You</h3>
-                <ul className="mt-4 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+                <ul className="mt-4 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
                   {OFFERINGS.map((o) => (
-                    <li key={o} className="flex gap-2">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
-                      {o}
+                    <li key={o.title} className="flex items-center gap-2 rounded-xl bg-background/50 p-2.5 border border-border/40">
+                      <span className="flex size-7 items-center justify-center rounded-lg bg-brand/10 text-brand">
+                        <o.icon className="size-3.5" />
+                      </span>
+                      <span className="text-xs font-medium">{o.title}</span>
                     </li>
                   ))}
                 </ul>
@@ -417,8 +440,8 @@ function Index() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {CLIENTS.map((c, i) => (
               <Reveal key={c.name} delay={i * 70}>
-                <article className="soft-card h-full rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1">
-                  <h3 className="text-base font-bold">{c.name}</h3>
+                <article className="soft-card h-full rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 border border-border/60">
+                  <h3 className="text-base font-bold text-foreground">{c.name}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{c.work}</p>
                 </article>
               </Reveal>
@@ -449,7 +472,6 @@ function Index() {
             </Link>
           </Reveal>
 
-
           <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {FEATURES.map((f, i) => (
               <Reveal
@@ -468,11 +490,18 @@ function Index() {
               </Reveal>
             ))}
           </div>
-
         </div>
       </section>
 
       <SiteFooter />
+
+      {/* Lightbox Modal */}
+      <ImageLightbox
+        activeShot={activeShot}
+        shots={shots}
+        onClose={() => setActiveShot(null)}
+        onSelect={setActiveShot}
+      />
     </div>
   );
 }
@@ -491,7 +520,7 @@ function AssetCard({
   meta: string;
 }) {
   return (
-    <figure className="group relative overflow-hidden rounded-3xl soft-card">
+    <figure className="group relative overflow-hidden rounded-3xl soft-card border border-border/60">
       <img
         src={src}
         alt={alt}
@@ -500,21 +529,21 @@ function AssetCard({
       />
 
       {badge && (
-        <span className="absolute left-4 top-4 flex items-center gap-2 rounded-full brand-gradient px-3 py-1.5 text-xs font-medium text-brand-foreground">
+        <span className="absolute left-4 top-4 flex items-center gap-2 rounded-full brand-gradient px-3 py-1.5 text-xs font-medium text-brand-foreground shadow-md">
           <Film className="size-3.5" />
           {badge}
         </span>
       )}
 
-      <figcaption className="flex items-center justify-between px-4 py-3">
+      <figcaption className="flex items-center justify-between px-5 py-4">
         <span className="leading-tight">
-          <span className="block text-xs font-semibold">{title}</span>
-          <span className="block text-[10px] text-muted-foreground">{meta}</span>
+          <span className="block text-sm font-semibold">{title}</span>
+          <span className="block text-[11px] text-muted-foreground mt-0.5">{meta}</span>
         </span>
-        <span className="flex items-center gap-2 text-xs font-semibold text-brand">
-          Case study
+        <Link to="/book" className="flex items-center gap-1 text-xs font-semibold text-brand hover:underline">
+          Book
           <ArrowUpRight className="size-3.5" />
-        </span>
+        </Link>
       </figcaption>
     </figure>
   );

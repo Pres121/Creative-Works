@@ -4,12 +4,7 @@ import { CalendarDays, ArrowUpRight } from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
-import g2 from "@/assets/g2.jpg";
-import g3 from "@/assets/g3.jpg";
-import g4 from "@/assets/g4.jpg";
-import g9 from "@/assets/g9.jpg";
-import g11 from "@/assets/g11.jpg";
-import g12 from "@/assets/g12.jpg";
+import { JOURNAL_POSTS } from "@/assets/portfolio-images";
 
 export const Route = createFileRoute("/journal")({
   head: () => ({
@@ -35,80 +30,13 @@ export const Route = createFileRoute("/journal")({
 
 const TOPICS = ["All", "Behind The Scenes", "Lighting", "Gear", "Post"] as const;
 
-type Post = {
-  title: string;
-  topic: (typeof TOPICS)[number];
-  date: string;
-  read: string;
-  img: string;
-  alt: string;
-  excerpt: string;
-};
-
-const POSTS: Post[] = [
-  {
-    title: "Shooting A Two-Day Brand Film On One Location",
-    topic: "Behind The Scenes",
-    date: "12 Jul 2026",
-    read: "6 min",
-    img: g2,
-    alt: "City street scene from a documentary shoot",
-    excerpt: "How we scheduled 14 setups in a single warehouse without ever relighting from scratch.",
-  },
-  {
-    title: "The Three-Light Setup We Use For Almost Every Portrait",
-    topic: "Lighting",
-    date: "28 Jun 2026",
-    read: "4 min",
-    img: g4,
-    alt: "Wildlife portrait captured on location",
-    excerpt: "A key, a negative fill and one honeycombed rim — the rest is just distance.",
-  },
-  {
-    title: "Why We Still Grade Every Frame By Hand",
-    topic: "Post",
-    date: "09 Jun 2026",
-    read: "5 min",
-    img: g12,
-    alt: "Mural backdrop for an editorial session",
-    excerpt: "LUTs get you 70% there. The last 30% is what clients actually remember.",
-  },
-  {
-    title: "Our Travel Kit For A Ten-Day Documentary Shoot",
-    topic: "Gear",
-    date: "22 May 2026",
-    read: "7 min",
-    img: g3,
-    alt: "Architectural facade study",
-    excerpt: "Two bodies, four primes, one drone — and everything that stayed at home.",
-  },
-  {
-    title: "Macro Product Work Without A Studio",
-    topic: "Lighting",
-    date: "03 May 2026",
-    read: "3 min",
-    img: g9,
-    alt: "Macro texture study",
-    excerpt: "A window, a bounce card and a focus rail beat a rented cyc more often than you'd think.",
-  },
-  {
-    title: "Planning A Wedding Timeline Around The Light",
-    topic: "Behind The Scenes",
-    date: "18 Apr 2026",
-    read: "5 min",
-    img: g11,
-    alt: "Tropical foliage detail shot",
-    excerpt: "Move the portraits, not the ceremony — a scheduling note we give every couple.",
-  },
-];
-
 function JournalPage() {
   const [topic, setTopic] = useState<(typeof TOPICS)[number]>("All");
   const [query, setQuery] = useState("");
 
   const posts = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return POSTS.filter(
+    return JOURNAL_POSTS.filter(
       (p) =>
         (topic === "All" || p.topic === topic) &&
         (q === "" ||
@@ -129,7 +57,7 @@ function JournalPage() {
             Notes From The Set.
           </h1>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Lighting breakdowns, gear lists and production diaries from our shoots.
+            Lighting breakdowns, gear lists and production diaries from our shoots across Malawi.
           </p>
 
           <div className="mx-auto mt-8 flex max-w-md items-center gap-3 rounded-full glass-brand px-5 py-3">
@@ -137,7 +65,7 @@ function JournalPage() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search the journal"
+              placeholder="Search the journal — Hollywood, MLW, Lighting"
               aria-label="Search the journal"
               className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
             />
@@ -173,12 +101,14 @@ function JournalPage() {
                 key={p.title}
                 className="group soft-card overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-1"
               >
-                <img
-                  src={p.img}
-                  alt={p.alt}
-                  loading="lazy"
-                  className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                <div className="overflow-hidden">
+                  <img
+                    src={p.img}
+                    alt={p.alt}
+                    loading="lazy"
+                    className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 text-[11px] text-muted-foreground">
                     <span className="rounded-full bg-brand/10 px-2.5 py-1 font-semibold text-brand">
@@ -192,10 +122,10 @@ function JournalPage() {
                   </div>
                   <h2 className="mt-4 text-lg font-bold leading-snug">{p.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-brand">
+                  <Link to="/book" className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline">
                     Read entry
                     <ArrowUpRight className="size-3.5" />
-                  </span>
+                  </Link>
                 </div>
               </article>
             ))}

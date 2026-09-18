@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
+import { ALL_IMAGES } from "@/assets/portfolio-images";
 import emailjs from "@emailjs/browser";
 
 export const Route = createFileRoute("/about")({
@@ -70,11 +71,34 @@ const CLIENTS = [
     name: "Malawi Liverpool Wellcome Programme",
     work: "Video documentaries & photography — over 5 years",
   },
-  { name: "Baylor College of Medicine", work: "TV spots" },
+  { name: "Baylor College of Medicine", work: "TV spots & health films" },
   { name: "Illovo Sugar Malawi", work: "Events coverage, live streaming & photography" },
-  { name: "Aljazeera Television", work: "Supplying local news" },
+  { name: "Aljazeera Television", work: "Supplying local news footage" },
   { name: "“The Boy Who Harnessed The Wind”", work: "Hollywood feature production support" },
   { name: "Save the Children", work: "Field documentaries & campaign films" },
+];
+
+const TEAM_PHOTOS = [
+  {
+    src: ALL_IMAGES.hollywoodForest,
+    title: "Hollywood Production Support",
+    subtitle: "'The Boy Who Harnessed The Wind' set",
+  },
+  {
+    src: ALL_IMAGES.mlwDocuInterview,
+    title: "Documentary Field Crew",
+    subtitle: "MLW Community Health Shoot",
+  },
+  {
+    src: ALL_IMAGES.tvStudioSet,
+    title: "TV Studio Broadcast Set",
+    subtitle: "Multi-Camera Television Production",
+  },
+  {
+    src: ALL_IMAGES.wirelessStreamHall,
+    title: "Live Streaming Command Desk",
+    subtitle: "Corporate Conference Broadcast",
+  },
 ];
 
 function AboutPage() {
@@ -109,6 +133,38 @@ function AboutPage() {
                   <div className="soft-card h-full rounded-2xl p-5">
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">{f.k}</p>
                     <p className="mt-2 text-lg font-bold text-brand">{f.v}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Team & Production Set Gallery */}
+        <section className="border-b border-border px-6 py-20">
+          <div className="mx-auto max-w-5xl">
+            <Reveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">Behind The Scenes</p>
+              <h2 className="mt-3 text-3xl font-bold md:text-4xl">Our Crew In Action</h2>
+              <p className="mt-3 text-sm text-muted-foreground max-w-2xl">
+                From remote field locations to studio sets and live corporate broadcasts, our crew brings state-of-the-art gear and decades of expertise to every project.
+              </p>
+            </Reveal>
+
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {TEAM_PHOTOS.map((photo, i) => (
+                <Reveal key={photo.title} delay={i * 80}>
+                  <div className="group overflow-hidden rounded-3xl soft-card border border-border/60">
+                    <img
+                      src={photo.src}
+                      alt={photo.title}
+                      loading="lazy"
+                      className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="p-4">
+                      <p className="text-sm font-bold">{photo.title}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{photo.subtitle}</p>
+                    </div>
                   </div>
                 </Reveal>
               ))}
