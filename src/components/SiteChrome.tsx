@@ -171,7 +171,7 @@ export function SiteFooter() {
           <h3 className="text-sm font-semibold text-foreground">Contact Us</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
-              <span className="mt-0.5 text-brand" aria-hidden="true">📍</span>
+              <span className="mt-0.5 text-brand" aria-hidden="true"></span>
               <span>
                 House No. 13, Nthiwatiwa Drive, New Naperi
                 <br />
@@ -179,15 +179,15 @@ export function SiteFooter() {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-brand" aria-hidden="true">☎</span>
+              <span className="text-brand" aria-hidden="true"></span>
               <a href="tel:+265999800094" className="hover:text-foreground">
                 0999 800 094
               </a>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-brand" aria-hidden="true">✉</span>
-              <a href="mailto:chimzere@gmail.com" className="hover:text-foreground">
-                chimzere@gmail.com
+              <span className="text-brand" aria-hidden="true"></span>
+              <a href="mailto:creativeworksmw@gmail.com" className="hover:text-foreground">
+                creativeworksmw@gmail.com
               </a>
             </li>
           </ul>

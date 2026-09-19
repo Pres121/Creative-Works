@@ -295,7 +295,7 @@ export const PRODUCTIONS: Production[] = [
     alt: "Aerial drone shot of First Capital Bank Stadium crowd",
     title: "First Capital Bank Corporate Cup",
     meta: "Aerial Coverage & Highlights · FCB",
-    tab: "Weddings",
+    tab: "commercial",
     badge: "Aerial",
   },
   {
@@ -303,14 +303,14 @@ export const PRODUCTIONS: Production[] = [
     alt: "First Capital Bank 30th anniversary backdrop",
     title: "First Capital Bank 30th Gala",
     meta: "Corporate Event Photography",
-    tab: "Weddings",
+    tab: "commercial",
   },
   {
     src: imgMulanjeAerial,
     alt: "Mulanje Mountain drone view",
     title: "Mulanje Massif Expedition",
     meta: "Aerial Photography & Landscape Stills",
-    tab: "Weddings",
+    tab: "commercial",
   },
   {
     src: imgMlwDocuInterview,

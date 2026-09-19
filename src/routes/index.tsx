@@ -312,7 +312,7 @@ function Index() {
             <h2 className="mt-2 text-4xl font-bold md:text-5xl">Featured Productions</h2>
           </div>
           <div className="flex gap-2">
-            {["Brand Films", "Weddings", "Editorial"].map((t) => (
+            {["Brand Films", "commercial", "Editorial"].map((t) => (
               <button
                 key={t}
                 onClick={() => setFeaturedTab(t)}
@@ -367,10 +367,7 @@ function Index() {
                 className={i % 2 === 1 ? "sm:mt-8" : ""}
               >
                 <article className="soft-card h-full rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/10 text-brand text-lg font-bold">
-                    ✓
-                  </span>
-                  <h3 className="mt-6 text-xl font-bold">{f.title}</h3>
+                  <h3 className="text-xl font-bold">{f.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
                 </article>
               </Reveal>
