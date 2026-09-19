@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Play, Mail, Phone, MapPin, Menu, X } from "lucide-react";
 import { ShowreelModal } from "@/components/ShowreelModal";
 
 const NAV = [
@@ -57,7 +56,7 @@ export function SiteHeader() {
               title="Watch Showreel"
               className="hidden size-9 items-center justify-center rounded-full glass-brand text-brand btn-motion hover:text-foreground sm:flex"
             >
-              <Play className="size-4 fill-current" />
+              ▶
             </button>
             <Link
               to="/book"
@@ -73,16 +72,12 @@ export function SiteHeader() {
               aria-expanded={open}
               className="relative flex size-10 items-center justify-center rounded-full glass-brand text-brand btn-motion md:hidden"
             >
-              <Menu
-                className={`absolute size-5 transition-all duration-300 ${
-                  open ? "rotate-90 scale-50 opacity-0" : "rotate-0 scale-100 opacity-100"
-                }`}
-              />
-              <X
-                className={`absolute size-5 transition-all duration-300 ${
-                  open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-50 opacity-0"
-                }`}
-              />
+              <span className={`text-lg transition-all duration-300 ${open ? "scale-50 opacity-0" : "scale-100 opacity-100"}`} aria-hidden="true">
+                ☰
+              </span>
+              <span className={`absolute text-lg transition-all duration-300 ${open ? "scale-100 opacity-100" : "scale-50 opacity-0"}`} aria-hidden="true">
+                ✕
+              </span>
             </button>
           </div>
         </div>
@@ -120,7 +115,7 @@ export function SiteHeader() {
               }}
               className="flex items-center justify-center gap-2 rounded-xl border border-brand/20 bg-brand/5 px-4 py-3 text-sm font-semibold text-brand transition-all hover:bg-brand/10"
             >
-              <Play className="size-4 fill-current" /> Watch Showreel
+              ▶ Watch Showreel
             </button>
             <Link
               to="/book"
@@ -176,7 +171,7 @@ export function SiteFooter() {
           <h3 className="text-sm font-semibold text-foreground">Contact Us</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
+              <span className="mt-0.5 text-brand" aria-hidden="true">📍</span>
               <span>
                 House No. 13, Nthiwatiwa Drive, New Naperi
                 <br />
@@ -184,13 +179,13 @@ export function SiteFooter() {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="size-4 shrink-0 text-brand" />
+              <span className="text-brand" aria-hidden="true">☎</span>
               <a href="tel:+265999800094" className="hover:text-foreground">
                 0999 800 094
               </a>
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="size-4 shrink-0 text-brand" />
+              <span className="text-brand" aria-hidden="true">✉</span>
               <a href="mailto:chimzere@gmail.com" className="hover:text-foreground">
                 chimzere@gmail.com
               </a>

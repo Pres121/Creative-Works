@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { X, Play, Film, Award, CheckCircle2 } from "lucide-react";
 import { ALL_IMAGES } from "@/assets/portfolio-images";
 
 type ShowreelModalProps = {
@@ -21,8 +20,8 @@ export function ShowreelModal({ isOpen, onClose }: ShowreelModalProps) {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
           <div className="flex items-center gap-3">
-            <span className="flex size-9 items-center justify-center rounded-full brand-gradient text-brand-foreground">
-              <Film className="size-4" />
+            <span className="flex size-9 items-center justify-center rounded-full brand-gradient text-brand-foreground text-xs font-bold">
+              Reel
             </span>
             <div>
               <h3 className="font-bold text-white text-base">Creative Works — Showreel</h3>
@@ -35,7 +34,7 @@ export function ShowreelModal({ isOpen, onClose }: ShowreelModalProps) {
             className="flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110"
             aria-label="Close modal"
           >
-            <X className="size-5" />
+            ×
           </button>
         </div>
 
@@ -55,7 +54,7 @@ export function ShowreelModal({ isOpen, onClose }: ShowreelModalProps) {
                   onClick={() => setPlaying(true)}
                   className="group relative flex size-20 items-center justify-center rounded-full brand-gradient text-brand-foreground shadow-2xl transition-transform duration-300 hover:scale-110 btn-motion brand-glow"
                 >
-                  <Play className="size-8 translate-x-0.5 fill-current" />
+                  ▶
                   <span className="absolute -inset-2 rounded-full border border-brand/50 animate-ping opacity-30" />
                 </button>
                 <h4 className="mt-5 text-2xl font-bold text-white">Watch Official Showreel</h4>
@@ -67,8 +66,8 @@ export function ShowreelModal({ isOpen, onClose }: ShowreelModalProps) {
           ) : (
             <div className="relative flex h-full w-full flex-col items-center justify-center bg-black p-8 text-center">
               <div className="relative z-10 max-w-lg">
-                <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-brand/20 text-brand">
-                  <Award className="size-8" />
+                <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-brand/20 text-brand font-bold">
+                  ★
                 </div>
                 <h4 className="mt-4 text-xl font-bold text-white">Broadcast & Production Reel</h4>
                 <p className="mt-2 text-sm text-neutral-300">
@@ -77,19 +76,19 @@ export function ShowreelModal({ isOpen, onClose }: ShowreelModalProps) {
 
                 <div className="mt-6 grid grid-cols-2 gap-3 text-left text-xs text-neutral-300">
                   <div className="flex items-center gap-2 rounded-xl bg-white/5 p-3">
-                    <CheckCircle2 className="size-4 text-brand shrink-0" />
+                    <span className="text-brand shrink-0" aria-hidden="true">✓</span>
                     <span>4K Cinema & Drone Footage</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-white/5 p-3">
-                    <CheckCircle2 className="size-4 text-brand shrink-0" />
+                    <span className="text-brand shrink-0" aria-hidden="true">✓</span>
                     <span>Multi-Cam ATEM Live Streaming</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-white/5 p-3">
-                    <CheckCircle2 className="size-4 text-brand shrink-0" />
+                    <span className="text-brand shrink-0" aria-hidden="true">✓</span>
                     <span>Hollywood Production Support</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-white/5 p-3">
-                    <CheckCircle2 className="size-4 text-brand shrink-0" />
+                    <span className="text-brand shrink-0" aria-hidden="true">✓</span>
                     <span>Broadcast Master Grading</span>
                   </div>
                 </div>

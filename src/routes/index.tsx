@@ -1,19 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import {
-  ArrowUpRight,
-  Camera,
-  Clapperboard,
-  Film,
-  Maximize2,
-  Search,
-  Sparkles,
-  Users,
-  X,
-  Radio,
-  Signal,
-  Tv,
-} from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
@@ -55,22 +41,18 @@ const CATEGORIES = [
 
 const FEATURES = [
   {
-    icon: Camera,
     title: "Professionalism",
     body: "Over two decades producing multimedia in accordance with professional ethics and standards — a crew that has stood the test of time since 2002.",
   },
   {
-    icon: Clapperboard,
     title: "Quality",
     body: "TV programmes, documentaries, adverts, event videography and live streaming, all shot on the latest state-of-the-art equipment.",
   },
   {
-    icon: Sparkles,
     title: "Affordability",
     body: "Converging creativity, technology and professionalism so clients effortlessly and affordably access the highest quality multimedia services.",
   },
   {
-    icon: Users,
     title: "Customization",
     body: "A creative, dynamic and friendly team that caters for all — every production shaped around the customer's brief and budget.",
   },
@@ -89,17 +71,13 @@ const CLIENTS = [
 ];
 
 const OFFERINGS = [
-  { title: "TV programs & documentaries", icon: Tv },
-  { title: "Event videography & corporate functions", icon: VideoIcon },
-  { title: "Graphic designing & campaign collateral", icon: Sparkles },
-  { title: "Radio & audio adverts", icon: Radio },
-  { title: "Professional photography & studio stills", icon: Camera },
-  { title: "Multi-camera live streaming", icon: Signal },
+  { title: "TV programs & documentaries" },
+  { title: "Event videography & corporate functions" },
+  { title: "Graphic designing & campaign collateral" },
+  { title: "Radio & audio adverts" },
+  { title: "Professional photography & studio stills" },
+  { title: "Multi-camera live streaming" },
 ];
-
-function VideoIcon(props: any) {
-  return <Film {...props} />;
-}
 
 const SERVICES = ["Photography", "Videography", "Aerial"] as const;
 
@@ -174,7 +152,7 @@ function Index() {
             className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:items-center"
           >
             <div className="relative flex flex-1 items-center gap-3 rounded-full glass-brand px-5 py-3 transition-shadow duration-300 focus-within:ring-4 focus-within:ring-brand/15">
-              <Search className="size-4 shrink-0 text-brand" />
+              <span className="text-brand" aria-hidden="true">⌕</span>
               <input
                 type="search"
                 value={query}
@@ -188,7 +166,7 @@ function Index() {
                   onClick={() => setQuery("")}
                   className="size-5 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground"
                 >
-                  <X className="size-3" />
+                  ×
                 </button>
               )}
             </div>
@@ -302,7 +280,7 @@ function Index() {
                           {img.category}
                         </span>
                         <span className="flex items-center gap-1 rounded-full brand-gradient px-2.5 py-1 font-semibold text-brand-foreground text-[10px] shadow-sm">
-                          <Maximize2 className="size-3" /> Inspect
+                          ⤢ Inspect
                         </span>
                       </div>
                     </div>
@@ -357,99 +335,7 @@ function Index() {
         </div>
       </section>
 
-      {/* About */}
-      <section className="border-t border-border px-6 py-24">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
-          <Reveal from="left">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">About Us</p>
-            <h2 className="mt-3 text-4xl font-bold md:text-5xl">Two Decades Behind The Lens</h2>
-            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-              Creative Works Communications, formerly known as Creative Works, was established in
-              <strong className="text-foreground"> 2002</strong> and re-registered in 2023 (TPIN:
-              31659272). We focus on converging creativity, technology and professionalism with the
-              sole aim of ensuring that our customers effortlessly and affordably access and use the
-              highest quality multimedia services and products.
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              With experience spanning over a decade in video production, we have worked with high
-              profile individuals and international production companies — including the Hollywood
-              production of “The Boy Who Harnessed The Wind” — using the latest state-of-the-art
-              equipment.
-            </p>
-
-            <div className="mt-8 grid grid-cols-3 gap-4">
-              {[
-                { k: "2002", v: "Established" },
-                { k: "20+", v: "Years of production" },
-                { k: "7", v: "Service lines" },
-              ].map((s) => (
-                <div key={s.v} className="soft-card rounded-2xl p-4">
-                  <p className="text-2xl font-bold text-brand">{s.k}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{s.v}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          <div className="flex flex-col gap-6">
-            <Reveal from="right">
-              <article className="soft-card rounded-3xl p-8">
-                <h3 className="text-xl font-bold">Our Mission</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  To produce high quality multimedia products in accordance to professional ethics
-                  and standards while satisfying the customer.
-                </p>
-              </article>
-            </Reveal>
-            <Reveal from="right" delay={100}>
-              <article className="soft-card rounded-3xl p-8">
-                <h3 className="text-xl font-bold">Our Vision</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Creating compelling and high-quality video content.
-                </p>
-              </article>
-            </Reveal>
-            <Reveal from="right" delay={200}>
-              <article className="soft-card rounded-3xl p-8">
-                <h3 className="text-xl font-bold">What We Have For You</h3>
-                <ul className="mt-4 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
-                  {OFFERINGS.map((o) => (
-                    <li key={o.title} className="flex items-center gap-2 rounded-xl bg-background/50 p-2.5 border border-border/40">
-                      <span className="flex size-7 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                        <o.icon className="size-3.5" />
-                      </span>
-                      <span className="text-xs font-medium">{o.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Clients */}
-      <section className="border-t border-border px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-              What We Have Done For Others
-            </p>
-            <h2 className="mt-3 text-4xl font-bold md:text-5xl">Trusted By</h2>
-          </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {CLIENTS.map((c, i) => (
-              <Reveal key={c.name} delay={i * 70}>
-                <article className="soft-card h-full rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 border border-border/60">
-                  <h3 className="text-base font-bold text-foreground">{c.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{c.work}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
+     
       {/* What we believe in */}
       <section className="relative overflow-hidden border-t border-border bg-[color-mix(in_oklab,var(--brand)_5%,white)] px-6 py-24">
         <div className="pointer-events-none absolute right-[10%] top-1/3 size-96 rounded-full bg-brand/20 blur-3xl" />
@@ -481,8 +367,8 @@ function Index() {
                 className={i % 2 === 1 ? "sm:mt-8" : ""}
               >
                 <article className="soft-card h-full rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/10">
-                    <f.icon className="size-5 text-brand" />
+                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/10 text-brand text-lg font-bold">
+                    ✓
                   </span>
                   <h3 className="mt-6 text-xl font-bold">{f.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
@@ -530,7 +416,7 @@ function AssetCard({
 
       {badge && (
         <span className="absolute left-4 top-4 flex items-center gap-2 rounded-full brand-gradient px-3 py-1.5 text-xs font-medium text-brand-foreground shadow-md">
-          <Film className="size-3.5" />
+          <span aria-hidden="true">◉</span>
           {badge}
         </span>
       )}
@@ -541,8 +427,7 @@ function AssetCard({
           <span className="block text-[11px] text-muted-foreground mt-0.5">{meta}</span>
         </span>
         <Link to="/book" className="flex items-center gap-1 text-xs font-semibold text-brand hover:underline">
-          Book
-          <ArrowUpRight className="size-3.5" />
+          Book →
         </Link>
       </figcaption>
     </figure>

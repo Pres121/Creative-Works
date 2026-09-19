@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { X, ChevronLeft, ChevronRight, Camera, Film, Sparkles } from "lucide-react";
 import type { Shot } from "@/assets/portfolio-images";
 
 type ImageLightboxProps = {
@@ -27,12 +26,14 @@ export function ImageLightbox({ activeShot, shots, onClose, onSelect }: ImageLig
 
   function handlePrev() {
     const prevIdx = (currentIndex - 1 + shots.length) % shots.length;
-    onSelect(shots[prevIdx]);
+    const prevShot = shots[prevIdx];
+    if (prevShot) onSelect(prevShot);
   }
 
   function handleNext() {
     const nextIdx = (currentIndex + 1) % shots.length;
-    onSelect(shots[nextIdx]);
+    const nextShot = shots[nextIdx];
+    if (nextShot) onSelect(nextShot);
   }
 
   return (
@@ -46,7 +47,7 @@ export function ImageLightbox({ activeShot, shots, onClose, onSelect }: ImageLig
         className="absolute right-6 top-6 z-10 flex size-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-110"
         aria-label="Close lightbox"
       >
-        <X className="size-6" />
+        ×
       </button>
 
       {/* Navigation Buttons */}
@@ -57,14 +58,14 @@ export function ImageLightbox({ activeShot, shots, onClose, onSelect }: ImageLig
             className="absolute left-6 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-110"
             aria-label="Previous photo"
           >
-            <ChevronLeft className="size-7" />
+            ‹
           </button>
           <button
             onClick={handleNext}
             className="absolute right-6 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-110"
             aria-label="Next photo"
           >
-            <ChevronRight className="size-7" />
+            ›
           </button>
         </>
       )}
@@ -84,13 +85,6 @@ export function ImageLightbox({ activeShot, shots, onClose, onSelect }: ImageLig
           <div>
             <div className="flex items-center gap-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/20 px-3 py-1 text-xs font-semibold text-brand">
-                {activeShot.service === "Photography" ? (
-                  <Camera className="size-3.5" />
-                ) : activeShot.service === "Videography" ? (
-                  <Film className="size-3.5" />
-                ) : (
-                  <Sparkles className="size-3.5" />
-                )}
                 {activeShot.service}
               </span>
               <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80">

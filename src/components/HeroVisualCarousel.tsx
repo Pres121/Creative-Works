@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Maximize2, Sparkles, Film, Award, ShieldCheck } from "lucide-react";
 import { Shot, ALL_IMAGES } from "@/assets/portfolio-images";
 
 type HeroVisualCarouselProps = {
@@ -70,8 +69,12 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
     return () => clearInterval(timer);
   }, []);
 
-  const slide = FEATURED_SLIDES[activeIdx];
-  const matchedShot = portfolioShots.find((s) => s.id === slide.shotId);
+  const slide = FEATURED_SLIDES[activeIdx] ?? FEATURED_SLIDES[0];
+  const matchedShot = slide ? portfolioShots.find((s) => s.id === slide.shotId) : undefined;
+
+  if (!slide) {
+    return null;
+  }
 
   return (
     <div className="mt-8 flex flex-col gap-10">
@@ -90,8 +93,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
           <div className="absolute bottom-4 left-4 right-4 flex flex-col justify-between gap-3 text-left sm:bottom-6 sm:left-6 sm:right-6 sm:flex-row sm:items-end">
             <div>
               <div className="flex items-center gap-2">
-                <span className="flex items-center gap-1 rounded-full brand-gradient px-3 py-1 text-[10px] font-bold text-brand-foreground shadow-sm">
-                  <Film className="size-3" />
+                <span className="rounded-full brand-gradient px-3 py-1 text-[10px] font-bold text-brand-foreground shadow-sm">
                   {slide.tag}
                 </span>
                 <span className="rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] font-medium text-white backdrop-blur-md">
@@ -108,8 +110,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
               }}
               className="inline-flex items-center justify-center gap-2 rounded-full glass-brand px-4 py-2 text-xs font-semibold text-brand backdrop-blur-md transition-transform duration-300 hover:scale-105"
             >
-              <Maximize2 className="size-3.5" />
-              Expand Stills
+              ⤢ Expand Stills
             </button>
           </div>
 
@@ -122,14 +123,14 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
               className="flex size-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-all hover:bg-black/70"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="size-5" />
+              ‹
             </button>
             <button
               onClick={() => setActiveIdx((prev) => (prev + 1) % FEATURED_SLIDES.length)}
               className="flex size-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-all hover:bg-black/70"
               aria-label="Next slide"
             >
-              <ChevronRight className="size-5" />
+              ›
             </button>
           </div>
         </div>
@@ -153,7 +154,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
       <div className="border-y border-border/70 py-6">
         <div className="mx-auto max-w-6xl text-center">
           <p className="flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-            <ShieldCheck className="size-3.5 text-brand" />
+            <span className="text-brand" aria-hidden="true">✓</span>
             Proven Track Record Across Malawi & International Broadcasts
           </p>
 

@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { CalendarDays, ArrowUpRight } from "lucide-react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
@@ -114,17 +113,13 @@ function JournalPage() {
                     <span className="rounded-full bg-brand/10 px-2.5 py-1 font-semibold text-brand">
                       {p.topic}
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <CalendarDays className="size-3.5" />
-                      {p.date}
-                    </span>
+                    <span>{p.date}</span>
                     <span>· {p.read}</span>
                   </div>
                   <h2 className="mt-4 text-lg font-bold leading-snug">{p.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
                   <Link to="/book" className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline">
-                    Read entry
-                    <ArrowUpRight className="size-3.5" />
+                    Read entry →
                   </Link>
                 </div>
               </article>

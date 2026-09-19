@@ -245,53 +245,6 @@ function AboutPage() {
             </Reveal>
           </div>
         </section>
-
-        <section className="px-6 py-20">
-          <div className="mx-auto max-w-5xl">
-            <Reveal>
-              <h2 className="text-3xl font-bold md:text-4xl">Contact & Registration</h2>
-
-              <div className="mt-8 grid gap-8 md:grid-cols-2">
-                <div>
-                  <dl className="grid gap-6">
-                    <div>
-                      <dt className="text-xs uppercase tracking-widest text-muted-foreground">
-                        Physical address
-                      </dt>
-                      <dd className="mt-2 text-sm">
-                        House No. 13, Nthiwatiwa Drive, New Naperi, Blantyre, Malawi
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs uppercase tracking-widest text-muted-foreground">
-                        Postal address
-                      </dt>
-                      <dd className="mt-2 text-sm">P.O. Box 32216, Blantyre 3, Malawi</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs uppercase tracking-widest text-muted-foreground">Phone</dt>
-                      <dd className="mt-2 text-sm">
-                        <a href="tel:+265999800094" className="hover:text-brand">
-                          0999 800 094
-                        </a>
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs uppercase tracking-widest text-muted-foreground">Email</dt>
-                      <dd className="mt-2 text-sm">
-                        <a href="mailto:creativeworks@gmail.com" className="hover:text-brand">
-                          creativeworks@gmail.com
-                        </a>
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-
-                <ContactForm />
-              </div>
-            </Reveal>
-          </div>
-        </section>
       </main>
 
       <SiteFooter />
@@ -314,11 +267,11 @@ function ContactForm() {
 
   function validate() {
     const e: Record<string, string> = {};
-    if (!name.trim()) e.name = "Please enter your name.";
-    if (!email.trim()) e.email = "Please enter your email.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Enter a valid email.";
-    if (phone.trim() && !/^\+?[0-9 \-()]{7,20}$/.test(phone)) e.phone = "Enter a valid phone number.";
-    if (!message.trim() || message.trim().length < 10) e.message = "Please enter a message (10+ chars).";
+    if (!name.trim()) e["name"] = "Please enter your name.";
+    if (!email.trim()) e["email"] = "Please enter your email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e["email"] = "Enter a valid email.";
+    if (phone.trim() && !/^\+?[0-9 \-()]{7,20}$/.test(phone)) e["phone"] = "Enter a valid phone number.";
+    if (!message.trim() || message.trim().length < 10) e["message"] = "Please enter a message (10+ chars).";
     setErrors(e);
     return Object.keys(e).length === 0;
   }
@@ -359,7 +312,7 @@ function ContactForm() {
         phone: phone || "",
         message: message || "",
       };
-      if (recaptchaToken) templateParams.recaptcha = recaptchaToken;
+      if (recaptchaToken) templateParams["recaptcha"] = recaptchaToken;
 
       await emailjs.send("service_eiuzrok", "template_o174voq", templateParams, "VPoMsdr9538BV0n9G");
       setSent(true);
@@ -400,25 +353,25 @@ function ContactForm() {
       <label className="block">
         <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">Full name</span>
         <input required value={name} onChange={(e) => setName(e.target.value)} className={inputClass} placeholder="Your name" />
-        {errors.name ? <p className="mt-1 text-sm text-destructive">{errors.name}</p> : null}
+        {errors["name"] ? <p className="mt-1 text-sm text-destructive">{errors["name"]}</p> : null}
       </label>
 
       <label className="block">
         <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">Email</span>
         <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} placeholder="you@studio.com" />
-        {errors.email ? <p className="mt-1 text-sm text-destructive">{errors.email}</p> : null}
+        {errors["email"] ? <p className="mt-1 text-sm text-destructive">{errors["email"]}</p> : null}
       </label>
 
       <label className="block">
         <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">Phone</span>
         <input value={phone} onChange={(e) => setPhone(e.target.value)} className={inputClass} placeholder="+265 99 9xx xxxx" />
-        {errors.phone ? <p className="mt-1 text-sm text-destructive">{errors.phone}</p> : null}
+        {errors["phone"] ? <p className="mt-1 text-sm text-destructive">{errors["phone"]}</p> : null}
       </label>
 
       <label className="block">
         <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">Message</span>
         <textarea required rows={5} value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClass} resize-none`} placeholder="How can we help?" />
-        {errors.message ? <p className="mt-1 text-sm text-destructive">{errors.message}</p> : null}
+        {errors["message"] ? <p className="mt-1 text-sm text-destructive">{errors["message"]}</p> : null}
       </label>
 
       
