@@ -62,15 +62,21 @@ function BookPage() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // Check honeypot via state and FormData
+    const formData = new FormData(e.currentTarget);
+    const hpSubmitted = (formData.get("hp_confirm")?.toString() || hpValue).trim();
+
     // Block bots that fill the hidden honeypot field
-    if (hpValue.trim() !== "") {
+    if (hpSubmitted !== "") {
       console.log("Spam submission blocked (honeypot).");
+      setSent(true);
       return;
     }
 
     // Block submissions made unrealistically quickly
     if (Date.now() - formLoadedAt < 2000) {
       console.log("Spam submission blocked (too fast).");
+      setSent(true);
       return;
     }
 

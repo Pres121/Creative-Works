@@ -257,6 +257,8 @@ function ContactForm() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [hpValue, setHpValue] = useState("");
+  const [formLoadedAt] = useState(() => Date.now());
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -294,6 +296,16 @@ function ContactForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const hpSubmitted = (formData.get("hp_confirm")?.toString() || hpValue).trim();
+
+    if (hpSubmitted !== "" || Date.now() - formLoadedAt < 2000) {
+      console.log("Spam submission blocked (honeypot/time-trap).");
+      setSent(true);
+      return;
+    }
+
     if (!validate()) return;
 
     setSending(true);
@@ -349,7 +361,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="soft-card space-y-4 rounded-3xl p-6">
+    <form onSubmit={handleSubmit} className="soft-card relative space-y-4 rounded-3xl p-6">
       <label className="block">
         <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">Full name</span>
         <input required value={name} onChange={(e) => setName(e.target.value)} className={inputClass} placeholder="Your name" />
@@ -374,7 +386,22 @@ function ContactForm() {
         {errors["message"] ? <p className="mt-1 text-sm text-destructive">{errors["message"]}</p> : null}
       </label>
 
-      
+      {/* Honeypot anti-spam field */}
+      <div
+        className="absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+        aria-hidden="true"
+      >
+        <label htmlFor="hp_contact_confirm">Leave this field empty</label>
+        <input
+          id="hp_contact_confirm"
+          name="hp_confirm"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={hpValue}
+          onChange={(e) => setHpValue(e.target.value)}
+        />
+      </div>
 
       <button
         type="submit"

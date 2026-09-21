@@ -81,43 +81,22 @@ const OFFERINGS = [
 
 const SERVICES = ["Photography", "Videography", "Aerial"] as const;
 
+const INITIAL_PORTFOLIO_COUNT = 8;
+
 function Index() {
-  const [category, setCategory] = useState("All");
-  const [service, setService] = useState<(typeof SERVICES)[number]>("Photography");
-  const [query, setQuery] = useState("");
+  const [expanded, setExpanded] = useState(false);
   const [featuredTab, setFeaturedTab] = useState("Brand Films");
   const [activeShot, setActiveShot] = useState<Shot | null>(null);
 
-  // Calculate item counts for category pills
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { All: PORTFOLIO_GALLERY.length };
-    CATEGORIES.forEach((cat) => {
-      if (cat !== "All") {
-        counts[cat] = PORTFOLIO_GALLERY.filter((s) => s.category === cat).length;
-      }
-    });
-    return counts;
-  }, []);
-
-  const shots = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return PORTFOLIO_GALLERY.filter(
-      (s) =>
-        (category === "All" || s.category === category) &&
-        (service === "Photography" || s.service === service || service === "Aerial" ? s.service === service : true) &&
-        (q === "" ||
-          s.title.toLowerCase().includes(q) ||
-          s.alt.toLowerCase().includes(q) ||
-          (s.client && s.client.toLowerCase().includes(q)) ||
-          s.category.toLowerCase().includes(q)),
-    );
-  }, [category, service, query]);
+  const visibleShots = useMemo(() => {
+    return expanded ? PORTFOLIO_GALLERY : PORTFOLIO_GALLERY.slice(0, INITIAL_PORTFOLIO_COUNT);
+  }, [expanded]);
 
   const columns = useMemo(() => {
     const cols: Shot[][] = [[], [], [], []];
-    shots.forEach((s, i) => cols[i % 4]?.push(s));
+    visibleShots.forEach((s, i) => cols[i % 4]?.push(s));
     return cols;
-  }, [shots]);
+  }, [visibleShots]);
 
   const productions = PRODUCTIONS.filter((p) => p.tab === featuredTab);
 
@@ -147,51 +126,13 @@ function Index() {
             </p>
           </Reveal>
 
-          <Reveal
-            delay={120}
-            className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:items-center"
-          >
-            <div className="relative flex flex-1 items-center gap-3 rounded-full glass-brand px-5 py-3 transition-shadow duration-300 focus-within:ring-4 focus-within:ring-brand/15">
-              <span className="text-brand" aria-hidden="true">⌕</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search portfolio — MLW, Illovo, Drone, Live Stream"
-                aria-label="Search the portfolio"
-                className="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-              />
-              {query && (
-                <button
-                  onClick={() => setQuery("")}
-                  className="size-5 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground"
-                >
-                  ×
-                </button>
-              )}
-            </div>
+          <Reveal delay={120} className="mx-auto mt-9 flex justify-center">
             <Link
               to="/book"
-              className="rounded-full brand-gradient px-6 py-3 text-center text-sm font-semibold text-brand-foreground btn-motion brand-glow"
+              className="rounded-full brand-gradient px-8 py-3.5 text-center text-sm font-semibold text-brand-foreground btn-motion brand-glow shadow-lg"
             >
               Book A Shoot
             </Link>
-          </Reveal>
-
-          <Reveal delay={220} className="mt-8 flex items-center justify-center gap-8 text-sm">
-            {SERVICES.map((t) => (
-              <button
-                key={t}
-                onClick={() => setService(t)}
-                className={`relative pb-1 font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-brand after:transition-transform after:duration-300 ${
-                  service === t
-                    ? "font-semibold text-brand after:scale-x-100"
-                    : "text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
           </Reveal>
 
           {/* Hero Visual Reel Showcase Banner */}
@@ -201,106 +142,76 @@ function Index() {
 
       {/* Gallery */}
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="flex flex-col items-center gap-4 text-center">
+        <div className="flex flex-col items-center gap-2 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">Production Stills</p>
           <h2 className="text-3xl font-bold md:text-4xl">Explore The Portfolio</h2>
-
-          <Reveal className="flex flex-wrap justify-center gap-2 border-t border-border pt-6">
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                onClick={() => setCategory(c)}
-                className={`rounded-full px-4 py-1.5 text-xs font-medium btn-motion ${
-                  category === c
-                    ? "brand-gradient tab-pop text-brand-foreground"
-                    : "border border-border text-muted-foreground hover:text-foreground hover:border-brand/30"
-                }`}
-              >
-                {c} <span className="opacity-75 font-normal">({categoryCounts[c] ?? 0})</span>
-              </button>
-            ))}
-          </Reveal>
-
-          <div className="text-xs text-muted-foreground">
-            Showing <strong className="text-foreground">{shots.length}</strong> {service.toLowerCase()} production stills
-            {category !== "All" && ` in ${category}`}
-            {query && ` matching "${query}"`}
-          </div>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Displaying <strong className="text-foreground">{visibleShots.length}</strong> of{" "}
+            <strong className="text-foreground">{PORTFOLIO_GALLERY.length}</strong> production stills
+          </p>
         </div>
 
-        {shots.length === 0 ? (
-          <div className="mt-16 rounded-3xl border border-dashed border-border p-12 text-center text-sm text-muted-foreground page-enter">
-            <p className="text-base font-semibold text-foreground">No matches found</p>
-            <p className="mt-1 text-xs">Try selecting another service type or clear your search.</p>
-            <button
-              onClick={() => {
-                setCategory("All");
-                setQuery("");
-              }}
-              className="mt-4 rounded-full border border-border px-4 py-2 text-xs font-semibold text-brand hover:border-brand"
-            >
-              Reset Filters
-            </button>
-          </div>
-        ) : (
-          <div
-            key={`${category}-${service}-${query}`}
-            className="mt-8 grid grid-cols-1 gap-4 page-enter sm:grid-cols-2 md:grid-cols-4"
-          >
-            {columns.map((col, i) => (
-              <div key={i} className="flex flex-col gap-4">
-                {col.map((img) => (
-                  <figure
-                    key={img.id}
-                    onClick={() => setActiveShot(img)}
-                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-brand/40"
-                  >
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      loading="lazy"
-                      className={`w-full ${img.h} object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
-                    />
+        <div className="mt-8 grid grid-cols-1 gap-4 page-enter sm:grid-cols-2 md:grid-cols-4">
+          {columns.map((col, i) => (
+            <div key={i} className="flex flex-col gap-4">
+              {col.map((img) => (
+                <figure
+                  key={img.id}
+                  onClick={() => setActiveShot(img)}
+                  className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-brand/40"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className={`w-full ${img.h} object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
+                  />
 
-                    {/* Top badge */}
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                      <span className="rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold text-white backdrop-blur-md">
-                        {img.service}
+                  {/* Top badge */}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                    <span className="rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold text-white backdrop-blur-md">
+                      {img.service}
+                    </span>
+                  </div>
+
+                  {/* Hover detail overlay */}
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 text-xs opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    <span className="font-bold text-white text-base leading-snug">{img.title}</span>
+                    {img.client && (
+                      <span className="text-white/80 text-[11px] mt-0.5 font-medium">Client: {img.client}</span>
+                    )}
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="rounded-full bg-brand/30 px-2.5 py-0.5 font-medium text-white text-[10px] backdrop-blur-md">
+                        {img.category}
+                      </span>
+                      <span className="flex items-center gap-1 rounded-full brand-gradient px-2.5 py-1 font-semibold text-brand-foreground text-[10px] shadow-sm">
+                        ⤢ Inspect
                       </span>
                     </div>
+                  </div>
+                </figure>
+              ))}
+            </div>
+          ))}
+        </div>
 
-                    {/* Hover detail overlay */}
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 text-xs opacity-0 transition-all duration-300 group-hover:opacity-100">
-                      <span className="font-bold text-white text-base leading-snug">{img.title}</span>
-                      {img.client && (
-                        <span className="text-white/80 text-[11px] mt-0.5 font-medium">Client: {img.client}</span>
-                      )}
-                      <div className="mt-3 flex items-center justify-between">
-                        <span className="rounded-full bg-brand/30 px-2.5 py-0.5 font-medium text-white text-[10px] backdrop-blur-md">
-                          {img.category}
-                        </span>
-                        <span className="flex items-center gap-1 rounded-full brand-gradient px-2.5 py-1 font-semibold text-brand-foreground text-[10px] shadow-sm">
-                          ⤢ Inspect
-                        </span>
-                      </div>
-                    </div>
-                  </figure>
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="mt-12 flex justify-center">
-          <button
-            onClick={() => {
-              setCategory("All");
-              setQuery("");
-            }}
-            className="rounded-full brand-gradient px-8 py-3.5 text-sm font-semibold text-brand-foreground btn-motion brand-glow"
-          >
-            See All Work
-          </button>
+        <div className="mt-12 flex flex-col items-center justify-center gap-3">
+          {!expanded ? (
+            <button
+              onClick={() => setExpanded(true)}
+              className="group inline-flex items-center gap-2 rounded-full brand-gradient px-8 py-4 text-sm font-bold text-brand-foreground btn-motion brand-glow"
+            >
+              <span>Show More Work ({PORTFOLIO_GALLERY.length - INITIAL_PORTFOLIO_COUNT} more stills)</span>
+              <span className="text-base transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => setExpanded(false)}
+              className="rounded-full border border-border px-6 py-2.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-brand hover:text-brand"
+            >
+              Show Less ↑
+            </button>
+          )}
         </div>
       </section>
 
@@ -381,7 +292,7 @@ function Index() {
       {/* Lightbox Modal */}
       <ImageLightbox
         activeShot={activeShot}
-        shots={shots}
+        shots={PORTFOLIO_GALLERY}
         onClose={() => setActiveShot(null)}
         onSelect={setActiveShot}
       />
