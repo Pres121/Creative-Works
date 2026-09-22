@@ -88,10 +88,10 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
   const slide = FEATURED_SLIDES[activeIdx] ?? FEATURED_SLIDES[0];
 
   return (
-    <div className="mt-8 flex flex-col gap-10">
+    <div className="mt-6 md:mt-8 flex flex-col gap-8 md:gap-10">
       {/* Visual Reel Banner */}
-      <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-brand/20 bg-neutral-950 p-2 shadow-2xl">
-        <div className="relative aspect-[16/8] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-neutral-900">
+      <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-brand/30 bg-neutral-950 p-1.5 sm:p-2 shadow-2xl shadow-brand/10">
+        <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-neutral-900">
           {/* Stacked Slides for Instant Preloading & Smooth Fade */}
           {FEATURED_SLIDES.map((s, idx) => {
             const isActive = idx === activeIdx;
@@ -109,32 +109,33 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
                   alt={s.title}
                   loading="eager"
                   decoding="async"
-                  className="h-full w-full object-cover brightness-90 transition-transform duration-700 ease-out hover:scale-105"
+                  className="h-full w-full object-cover brightness-[0.92] transition-transform duration-700 ease-out hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
 
                 {/* Slide Metadata Card */}
-                <div className="absolute bottom-4 left-4 right-4 flex flex-col justify-between gap-3 text-left sm:bottom-6 sm:left-6 sm:right-6 sm:flex-row sm:items-end">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-full brand-gradient px-3 py-1 text-[10px] font-bold text-brand-foreground shadow-sm">
+                <div className="absolute bottom-3 left-3 right-3 flex flex-col justify-between gap-3 text-left sm:bottom-5 sm:left-5 sm:right-5 sm:flex-row sm:items-end">
+                  <div className="rounded-2xl border border-white/10 bg-black/40 p-3 sm:p-4 backdrop-blur-md">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full brand-gradient px-2.5 py-0.5 text-[10px] font-bold text-brand-foreground shadow-xs">
                         {s.tag}
                       </span>
-                      <span className="rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] font-medium text-white backdrop-blur-md">
+                      <span className="rounded-full bg-white/15 px-2.5 py-0.5 text-[10px] font-medium text-white backdrop-blur-md">
                         {s.category}
                       </span>
                     </div>
-                    <h3 className="mt-2 text-xl font-bold text-white sm:text-2xl">{s.title}</h3>
-                    <p className="text-xs text-white/75 mt-0.5">Client: {s.client}</p>
+                    <h3 className="mt-1.5 text-lg font-bold text-white sm:text-xl md:text-2xl leading-snug">{s.title}</h3>
+                    <p className="text-xs text-white/75 mt-0.5 font-medium">Client: {s.client}</p>
                   </div>
 
                   <button
                     onClick={() => {
                       if (matchedShot) onSelectShot(matchedShot);
                     }}
-                    className="inline-flex items-center justify-center gap-2 rounded-full glass-brand px-4 py-2 text-xs font-semibold text-brand backdrop-blur-md transition-transform duration-300 hover:scale-105"
+                    className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-brand hover:text-brand-foreground hover:scale-105 shadow-md"
                   >
-                    ⤢ Expand Stills
+                    <span>⤢</span>
+                    <span>Expand Stills</span>
                   </button>
                 </div>
               </div>
@@ -142,19 +143,19 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
           })}
 
           {/* Nav Controls */}
-          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+          <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 sm:top-4 sm:right-4">
             <button
               onClick={() =>
                 setActiveIdx((prev) => (prev - 1 + FEATURED_SLIDES.length) % FEATURED_SLIDES.length)
               }
-              className="flex size-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-all hover:bg-black/70"
+              className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-all hover:bg-brand hover:border-brand hover:text-brand-foreground sm:size-9"
               aria-label="Previous slide"
             >
               ‹
             </button>
             <button
               onClick={() => setActiveIdx((prev) => (prev + 1) % FEATURED_SLIDES.length)}
-              className="flex size-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-all hover:bg-black/70"
+              className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-all hover:bg-brand hover:border-brand hover:text-brand-foreground sm:size-9"
               aria-label="Next slide"
             >
               ›
@@ -163,13 +164,13 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
         </div>
 
         {/* Thumbnail Dots */}
-        <div className="flex items-center justify-center gap-2 py-3">
+        <div className="flex items-center justify-center gap-2 py-2.5">
           {FEATURED_SLIDES.map((s, idx) => (
             <button
               key={s.shotId}
               onClick={() => setActiveIdx(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeIdx === idx ? "w-8 bg-brand" : "w-2 bg-white/20 hover:bg-white/40"
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activeIdx === idx ? "w-7 bg-brand" : "w-1.5 bg-white/30 hover:bg-white/60"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />

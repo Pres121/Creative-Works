@@ -105,34 +105,59 @@ function Index() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative overflow-hidden px-6 pt-16 pb-14 text-center">
-        <div className="pointer-events-none absolute left-1/2 top-0 size-[48rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-3xl" />
+      <section className="relative overflow-hidden px-6 pt-8 md:pt-12 pb-12 text-center">
+        {/* Layered ambient lighting effects */}
+        <div className="pointer-events-none absolute left-1/2 top-0 size-[42rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-brand/12 blur-3xl" />
+        <div className="pointer-events-none absolute right-1/4 top-1/4 size-72 rounded-full bg-amber-500/10 blur-3xl" />
+
         <div className="relative mx-auto max-w-4xl">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
-              Multimedia Production Since 2002 · Blantyre, Malawi
-            </p>
-            <h1 className="mt-5 text-5xl font-bold leading-[1.05] text-foreground md:text-6xl lg:text-7xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-4 py-1.5 text-[11px] font-semibold tracking-wider text-brand shadow-xs backdrop-blur-sm">
+              <span className="size-2 rounded-full bg-brand animate-pulse" />
+              <span>MULTIMEDIA PRODUCTION SINCE 2002 · BLANTYRE, MALAWI</span>
+            </div>
+
+            <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08]">
               We Film The Stories
               <br />
-              <span className="bg-gradient-to-r from-brand via-brand-soft to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand via-amber-500 to-orange-500 bg-clip-text text-transparent drop-shadow-xs">
                 Your Brand Tells.
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Creative Works Communications produces high quality multimedia — documentaries, TV
-              adverts, event videography, live streaming and professional photography — for clients
-              across Malawi and beyond.
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Creative Works Communications produces high-impact multimedia — documentaries, TV
+              adverts, event coverage, live streaming and commercial stills — for clients
+              across Malawi and internationally.
             </p>
           </Reveal>
 
-          <Reveal delay={120} className="mx-auto mt-9 flex justify-center">
+          <Reveal delay={120} className="mx-auto mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/book"
-              className="rounded-full brand-gradient px-8 py-3.5 text-center text-sm font-semibold text-brand-foreground btn-motion brand-glow shadow-lg"
+              className="group inline-flex items-center gap-2 rounded-full brand-gradient px-7 py-3 text-sm font-bold text-brand-foreground btn-motion brand-glow shadow-md"
             >
-              Book A Shoot
+              <span>Book A Shoot</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
+            <a
+              href="#portfolio"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/80 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-brand/40 hover:bg-secondary/60 hover:scale-105"
+            >
+              <span>Explore Portfolio</span>
+            </a>
+          </Reveal>
+
+          {/* Quick trust metrics */}
+          <Reveal delay={180} className="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <span className="text-brand">✓</span> 22+ Years Track Record
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-brand">✓</span> 4K & Broadcast Grade
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-brand">✓</span> Hollywood Support Credit
+            </span>
           </Reveal>
 
           {/* Hero Visual Reel Showcase Banner */}
@@ -141,7 +166,7 @@ function Index() {
       </section>
 
       {/* Gallery */}
-      <section className="mx-auto max-w-7xl px-6 pb-20">
+      <section id="portfolio" className="mx-auto max-w-7xl px-6 pb-20">
         <div className="flex flex-col items-center gap-2 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">Production Stills</p>
           <h2 className="text-3xl font-bold md:text-4xl">Explore The Portfolio</h2>
