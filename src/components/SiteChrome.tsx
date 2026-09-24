@@ -51,10 +51,10 @@ export function SiteHeader() {
             scrolled ? "py-1.5 md:py-2" : "py-2 md:py-2.5"
           }`}
         >
-          {/* Logo - bigger image without increasing header height */}
+          {/* Logo with Brand Name */}
           <Link
             to="/"
-            className="group relative flex shrink-0 items-center gap-2.5 py-0.5 transition-opacity hover:opacity-95"
+            className="group relative flex shrink-0 items-center gap-2.5 py-0.5 transition-all duration-300 hover:opacity-95"
           >
             {/* Ambient hover glow spot */}
             <div className="absolute -inset-2.5 rounded-2xl bg-brand/12 opacity-0 blur-lg transition-all duration-500 group-hover:opacity-100" />
@@ -64,6 +64,15 @@ export function SiteHeader() {
               alt="Creative Works logo"
               className="relative block h-10 w-auto shrink-0 transition-all duration-300 group-hover:scale-[1.05] md:h-12 animate-logo-glow"
             />
+
+            <div className="relative flex flex-col justify-center leading-tight">
+              <span className="font-display text-base sm:text-lg font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-brand">
+                Creative Works
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-widest -mt-0.5">
+                Communications
+              </span>
+            </div>
           </Link>
 
           {/* Nav pill container with modern subtle hover response */}

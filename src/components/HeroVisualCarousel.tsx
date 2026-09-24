@@ -91,7 +91,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
     <div className="mt-6 md:mt-8 flex flex-col gap-8 md:gap-10">
       {/* Visual Reel Banner */}
       <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-brand/30 bg-neutral-950 p-1.5 sm:p-2 shadow-2xl shadow-brand/10">
-        <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-neutral-900">
+        <div className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-neutral-900">
           {/* Stacked Slides for Instant Preloading & Smooth Fade */}
           {FEATURED_SLIDES.map((s, idx) => {
             const isActive = idx === activeIdx;
@@ -109,13 +109,37 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
                   alt={s.title}
                   loading="eager"
                   decoding="async"
-                  className="h-full w-full object-cover brightness-[0.92] transition-transform duration-700 ease-out hover:scale-105"
+                  className="h-full w-full object-cover brightness-[0.94] transition-transform duration-700 ease-out hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+                {/* Gradient vignette strictly at bottom */}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
 
-                {/* Slide Metadata Card */}
-                <div className="absolute bottom-3 left-3 right-3 flex flex-col justify-between gap-3 text-left sm:bottom-5 sm:left-5 sm:right-5 sm:flex-row sm:items-end">
-                  <div className="rounded-2xl border border-white/10 bg-black/40 p-3 sm:p-4 backdrop-blur-md">
+                {/* --- Mobile View Compact Overlay (<640px) --- */}
+                <div className="absolute inset-x-2 bottom-2 flex items-center justify-between gap-2 rounded-2xl border border-white/15 bg-black/55 p-2.5 backdrop-blur-md sm:hidden">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5">
+                      <span className="rounded-full brand-gradient px-2 py-0.5 text-[9px] font-bold text-brand-foreground shadow-xs shrink-0">
+                        {s.tag}
+                      </span>
+                      <span className="truncate text-[10px] text-white/75 font-medium">{s.category}</span>
+                    </div>
+                    <h3 className="truncate text-xs font-bold text-white mt-0.5">{s.title}</h3>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      if (matchedShot) onSelectShot(matchedShot);
+                    }}
+                    aria-label="Expand image stills"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-xl brand-gradient text-brand-foreground text-xs font-bold shadow-md active:scale-95"
+                  >
+                    ⤢
+                  </button>
+                </div>
+
+                {/* --- Tablet & Desktop Full Overlay (>=640px) --- */}
+                <div className="hidden absolute sm:bottom-5 sm:left-5 sm:right-5 sm:flex sm:flex-row sm:items-end sm:justify-between gap-3 text-left">
+                  <div className="rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-md max-w-xl">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="rounded-full brand-gradient px-2.5 py-0.5 text-[10px] font-bold text-brand-foreground shadow-xs">
                         {s.tag}
@@ -124,7 +148,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
                         {s.category}
                       </span>
                     </div>
-                    <h3 className="mt-1.5 text-lg font-bold text-white sm:text-xl md:text-2xl leading-snug">{s.title}</h3>
+                    <h3 className="mt-1.5 text-xl md:text-2xl font-bold text-white leading-snug">{s.title}</h3>
                     <p className="text-xs text-white/75 mt-0.5 font-medium">Client: {s.client}</p>
                   </div>
 
@@ -143,19 +167,19 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
           })}
 
           {/* Nav Controls */}
-          <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 sm:top-4 sm:right-4">
+          <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5 sm:top-4 sm:right-4">
             <button
               onClick={() =>
                 setActiveIdx((prev) => (prev - 1 + FEATURED_SLIDES.length) % FEATURED_SLIDES.length)
               }
-              className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-all hover:bg-brand hover:border-brand hover:text-brand-foreground sm:size-9"
+              className="flex size-7 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-all hover:bg-brand hover:border-brand hover:text-brand-foreground sm:size-9 text-xs sm:text-base"
               aria-label="Previous slide"
             >
               ‹
             </button>
             <button
               onClick={() => setActiveIdx((prev) => (prev + 1) % FEATURED_SLIDES.length)}
-              className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-all hover:bg-brand hover:border-brand hover:text-brand-foreground sm:size-9"
+              className="flex size-7 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-all hover:bg-brand hover:border-brand hover:text-brand-foreground sm:size-9 text-xs sm:text-base"
               aria-label="Next slide"
             >
               ›
