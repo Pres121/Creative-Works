@@ -213,12 +213,62 @@
   }
 }
 
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px oklch(0.7 0.19 45 / 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px oklch(0.7 0.19 45 / 0.45));
+  }
+}
+
+@keyframes slide-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  14% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  84% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110%);
+  }
+}
+
 @utility page-enter {
   animation: page-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @utility tab-pop {
   animation: tab-pop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-shimmer-sweep {
+  background-size: 200% 100%;
+  animation: shimmer-sweep 6s linear infinite;
+}
+
+@utility animate-logo-glow {
+  animation: logo-glow 4s ease-in-out infinite;
+}
+
+@utility animate-slide-in-out {
+  animation: slide-in-out 3.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 /* Buttons: lift + press feedback */

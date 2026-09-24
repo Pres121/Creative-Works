@@ -1,11 +1,40 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Reveal } from "@/components/Reveal";
 import { PORTFOLIO_GALLERY, PRODUCTIONS, Shot } from "@/assets/portfolio-images";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { HeroVisualCarousel } from "@/components/HeroVisualCarousel";
+
+const SLIDING_PHRASES = [
+  "Your Brand Tells.",
+  "Your Vision Deserves.",
+  "Your Audience Loves.",
+  "Your Business Needs.",
+];
+
+function SlidingHeadlineText() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % SLIDING_PHRASES.length);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <span className="relative inline-block overflow-hidden align-bottom py-1.5 px-1">
+      <span
+        key={index}
+        className="inline-block bg-gradient-to-r from-brand via-amber-500 to-orange-500 bg-clip-text text-transparent drop-shadow-xs animate-slide-in-out"
+      >
+        {SLIDING_PHRASES[index]}
+      </span>
+    </span>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -112,17 +141,10 @@ function Index() {
 
         <div className="relative mx-auto max-w-4xl">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-4 py-1.5 text-[11px] font-semibold tracking-wider text-brand shadow-xs backdrop-blur-sm">
-              <span className="size-2 rounded-full bg-brand animate-pulse" />
-              <span>MULTIMEDIA PRODUCTION SINCE 2002 · BLANTYRE, MALAWI</span>
-            </div>
-
-            <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08]">
+            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08]">
               We Film The Stories
               <br />
-              <span className="bg-gradient-to-r from-brand via-amber-500 to-orange-500 bg-clip-text text-transparent drop-shadow-xs">
-                Your Brand Tells.
-              </span>
+              <SlidingHeadlineText />
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               Creative Works Communications produces high-impact multimedia — documentaries, TV

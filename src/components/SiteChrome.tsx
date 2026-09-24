@@ -11,6 +11,7 @@ const NAV = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [showreelOpen, setShowreelOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
@@ -24,30 +25,55 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl transition-all duration-300 shadow-xs shadow-brand/5">
-        {/* Top ambient brand shimmer accent line */}
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-brand to-transparent opacity-80" />
+      <header
+        className={`sticky top-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "border-b border-brand/25 bg-background/90 backdrop-blur-2xl shadow-md shadow-brand/5"
+            : "border-b border-border/50 bg-background/80 backdrop-blur-xl shadow-xs shadow-brand/5"
+        }`}
+      >
+        {/* Top ambient brand shimmer accent line with continuous sweep animation */}
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-brand to-transparent animate-shimmer-sweep opacity-90" />
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2.5 md:py-3">
-          {/* Logo - compact height */}
-          <Link to="/" className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90">
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 transition-all duration-300 ${
+            scrolled ? "py-1.5 md:py-2" : "py-2 md:py-2.5"
+          }`}
+        >
+          {/* Logo - bigger image without increasing header height */}
+          <Link
+            to="/"
+            className="group relative flex shrink-0 items-center gap-2.5 py-0.5 transition-opacity hover:opacity-95"
+          >
+            {/* Ambient hover glow spot */}
+            <div className="absolute -inset-2.5 rounded-2xl bg-brand/12 opacity-0 blur-lg transition-all duration-500 group-hover:opacity-100" />
+
             <img
               src="/cw-logo.png"
               alt="Creative Works logo"
-              className="block h-8 w-auto shrink-0 transition-transform duration-300 group-hover:scale-105 md:h-10"
+              className="relative block h-10 w-auto shrink-0 transition-all duration-300 group-hover:scale-[1.05] md:h-12 animate-logo-glow"
             />
           </Link>
 
-          {/* Nav pill container */}
-          <nav className="hidden items-center gap-1 rounded-full border border-border/60 bg-secondary/40 p-1 text-xs font-medium text-muted-foreground backdrop-blur-md md:flex shadow-xs">
+          {/* Nav pill container with modern subtle hover response */}
+          <nav className="hidden items-center gap-1 rounded-full border border-border/60 bg-secondary/40 p-1 text-xs font-medium text-muted-foreground backdrop-blur-md md:flex shadow-xs transition-colors duration-300 hover:border-brand/30">
             {NAV.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                activeProps={{ className: "!text-brand !bg-background font-semibold shadow-xs" }}
-                className="rounded-full px-4 py-1.5 transition-all duration-300 hover:text-foreground hover:bg-background/60"
+                activeProps={{ className: "!text-brand !bg-background font-semibold shadow-xs border border-brand/25" }}
+                className="relative rounded-full px-4 py-1.5 transition-all duration-300 hover:text-foreground hover:bg-background/80 hover:scale-[1.02]"
               >
                 {l.label}
               </Link>
@@ -60,9 +86,11 @@ export function SiteHeader() {
               onClick={() => setShowreelOpen(true)}
               aria-label="Watch Showreel"
               title="Watch Showreel"
-              className="hidden items-center gap-1.5 rounded-full border border-brand/25 bg-brand/5 px-3.5 py-1.5 text-xs font-semibold text-brand transition-all duration-300 hover:bg-brand/15 hover:border-brand/40 hover:scale-105 sm:flex"
+              className="group hidden items-center gap-1.5 rounded-full border border-brand/25 bg-brand/5 px-3.5 py-1.5 text-xs font-semibold text-brand transition-all duration-300 hover:bg-brand/15 hover:border-brand/40 hover:scale-105 sm:flex shadow-xs"
             >
-              <span className="flex size-4 items-center justify-center rounded-full bg-brand text-[8px] text-white">▶</span>
+              <span className="flex size-4 items-center justify-center rounded-full bg-brand text-[8px] text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+                ▶
+              </span>
               <span>Reel</span>
             </button>
             <Link
