@@ -14,6 +14,7 @@ const FEATURED_SLIDES = [
     category: "Brand Films",
     tag: "Hollywood Feature Support",
     image: ALL_IMAGES.hollywoodForest,
+    objectPos: "object-top",
   },
   {
     shotId: "fcb-stadium-drone",
@@ -22,6 +23,7 @@ const FEATURED_SLIDES = [
     category: "Aerial",
     tag: "Stadium Drone Panorama",
     image: ALL_IMAGES.fcbAerial,
+    objectPos: "object-center",
   },
   {
     shotId: "mulanje-drone",
@@ -30,6 +32,7 @@ const FEATURED_SLIDES = [
     category: "Aerial",
     tag: "Mountain Landscape Drone",
     image: ALL_IMAGES.mulanjeAerial,
+    objectPos: "object-center",
   },
   {
     shotId: "tea-plantation-cinema",
@@ -38,6 +41,7 @@ const FEATURED_SLIDES = [
     category: "Travel",
     tag: "Location Cinematography",
     image: ALL_IMAGES.teaPlantation,
+    objectPos: "object-top",
   },
   {
     shotId: "tv-studio-set",
@@ -46,6 +50,7 @@ const FEATURED_SLIDES = [
     category: "Brand Films",
     tag: "TV Studio Broadcast Set",
     image: ALL_IMAGES.tvStudioSet,
+    objectPos: "object-top",
   },
   {
     shotId: "mlw-docu-interview",
@@ -54,6 +59,7 @@ const FEATURED_SLIDES = [
     category: "Editorial",
     tag: "Field Documentary Crew",
     image: ALL_IMAGES.mlwDocuInterview,
+    objectPos: "object-top",
   },
   {
     shotId: "wireless-streaming-hall",
@@ -62,6 +68,7 @@ const FEATURED_SLIDES = [
     category: "Events",
     tag: "Live Streaming Station",
     image: ALL_IMAGES.wirelessStreamHall,
+    objectPos: "object-top",
   },
 ];
 
@@ -91,7 +98,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
     <div className="mt-6 md:mt-8 flex flex-col gap-8 md:gap-10">
       {/* Visual Reel Banner */}
       <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-brand/30 bg-neutral-950 p-1.5 sm:p-2 shadow-2xl shadow-brand/10">
-        <div className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-neutral-900">
+        <div className="relative aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-900">
           {/* Stacked Slides for Instant Preloading & Smooth Fade */}
           {FEATURED_SLIDES.map((s, idx) => {
             const isActive = idx === activeIdx;
@@ -109,7 +116,7 @@ export function HeroVisualCarousel({ onSelectShot, portfolioShots }: HeroVisualC
                   alt={s.title}
                   loading="eager"
                   decoding="async"
-                  className="h-full w-full object-cover brightness-[0.94] transition-transform duration-700 ease-out hover:scale-105"
+                  className={`h-full w-full object-cover ${s.objectPos || "object-top"} brightness-[0.94] transition-transform duration-700 ease-out hover:scale-105`}
                 />
                 {/* Gradient vignette strictly at bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />

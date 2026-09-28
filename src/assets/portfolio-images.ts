@@ -29,6 +29,7 @@ export type Shot = {
   h: string;
   category: string;
   service: "Photography" | "Videography" | "Aerial";
+  objectPos?: string;
 };
 
 export type Production = {
@@ -38,6 +39,7 @@ export type Production = {
   meta: string;
   tab: string;
   badge?: string;
+  objectPos?: string;
 };
 
 export const ALL_IMAGES = {
@@ -73,6 +75,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Travel",
     service: "Aerial",
+    objectPos: "object-center",
   },
   {
     id: "fcb-stadium-drone",
@@ -83,6 +86,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-72",
     category: "Events",
     service: "Aerial",
+    objectPos: "object-center",
   },
   {
     id: "ictam-women-conf",
@@ -93,6 +97,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "boy-harnessed-wind",
@@ -103,6 +108,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Brand Films",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "mlw-docu-interview",
@@ -113,6 +119,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Editorial",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "factory-production",
@@ -123,6 +130,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Products",
     service: "Photography",
+    objectPos: "object-top",
   },
   {
     id: "textile-macro",
@@ -133,6 +141,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-48",
     category: "Products",
     service: "Photography",
+    objectPos: "object-center",
   },
   {
     id: "rural-field-docu",
@@ -143,6 +152,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Editorial",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "mlw-campus-portrait",
@@ -153,6 +163,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-72",
     category: "Portraits",
     service: "Photography",
+    objectPos: "object-top",
   },
   {
     id: "multicam-field-crew",
@@ -163,6 +174,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Editorial",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "illovo-gimbal-op",
@@ -173,6 +185,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "live-stream-atem",
@@ -183,6 +196,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "studio-lighting-rig",
@@ -193,6 +207,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-72",
     category: "Portraits",
     service: "Photography",
+    objectPos: "object-top",
   },
   {
     id: "tv-studio-set",
@@ -203,6 +218,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Brand Films",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "fcb-30th-anniversary",
@@ -213,6 +229,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Photography",
+    objectPos: "object-top",
   },
   {
     id: "corporate-interview-gimbal",
@@ -223,6 +240,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Brand Films",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "tea-plantation-cinema",
@@ -233,6 +251,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Travel",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "mlw-creator-stage",
@@ -243,6 +262,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "wireless-streaming-hall",
@@ -253,6 +273,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
   {
     id: "lakeside-stream-unit",
@@ -263,6 +284,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 ];
 
@@ -274,6 +296,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Hollywood Feature Support · Production Crew",
     tab: "Brand Films",
     badge: "Feature Support",
+    objectPos: "object-top",
   },
   {
     src: imgTvStudioSet,
@@ -282,6 +305,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "TV Programs & Documentaries · 2025-2026",
     tab: "Brand Films",
     badge: "TV Broadcast",
+    objectPos: "object-top",
   },
   {
     src: imgTeaPlantation,
@@ -289,6 +313,7 @@ export const PRODUCTIONS: Production[] = [
     title: "Thyolo Estate Brand Film",
     meta: "Commercial Cinematography · Location Shoot",
     tab: "Brand Films",
+    objectPos: "object-top",
   },
   {
     src: imgFCBAerial,
@@ -297,6 +322,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Aerial Coverage & Highlights · FCB",
     tab: "commercial",
     badge: "Aerial",
+    objectPos: "object-center",
   },
   {
     src: imgFCBAnniversary,
@@ -304,6 +330,7 @@ export const PRODUCTIONS: Production[] = [
     title: "First Capital Bank 30th Gala",
     meta: "Corporate Event Photography",
     tab: "commercial",
+    objectPos: "object-top",
   },
   {
     src: imgMulanjeAerial,
@@ -311,6 +338,7 @@ export const PRODUCTIONS: Production[] = [
     title: "Mulanje Massif Expedition",
     meta: "Aerial Photography & Landscape Stills",
     tab: "commercial",
+    objectPos: "object-center",
   },
   {
     src: imgMlwDocuInterview,
@@ -319,6 +347,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Field Documentary · 5+ Year Partnership",
     tab: "Editorial",
     badge: "Documentary",
+    objectPos: "object-top",
   },
   {
     src: imgVillageMultiCam,
@@ -326,6 +355,7 @@ export const PRODUCTIONS: Production[] = [
     title: "Community Voices Malawi",
     meta: "Multi-Cam Field Production",
     tab: "Editorial",
+    objectPos: "object-top",
   },
   {
     src: imgWirelessStreamHall,
@@ -334,6 +364,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Multi-Cam Live Streaming Setup",
     tab: "Editorial",
     badge: "Live Broadcast",
+    objectPos: "object-top",
   },
 ];
 
