@@ -94,11 +94,7 @@ const TEAM_PHOTOS = [
     title: "TV Studio Broadcast Set",
     subtitle: "Multi-Camera Television Production",
   },
-  {
-    src: ALL_IMAGES.wirelessStreamHall,
-    title: "Live Streaming Command Desk",
-    subtitle: "Corporate Conference Broadcast",
-  },
+ 
 ];
 
 function AboutPage() {

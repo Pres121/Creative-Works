@@ -16,7 +16,6 @@ import imgFCBAnniversary from "@/assets/IMG_20250729_115548_678.jpg.jpeg";
 import imgCorporateInterview from "@/assets/IMG_20250808_144148_807.jpg.jpeg";
 import imgTeaPlantation from "@/assets/IMG_20250818_181646_061.jpg.jpeg";
 import imgMlwCreatorStage from "@/assets/IMG_20251010_104505_368.jpg.jpeg";
-import imgWirelessStreamHall from "@/assets/IMG_20251112_165827_788.jpg.jpeg";
 import imgLakesideStreamStation from "@/assets/IMG_20260307_133830_943.jpg.jpeg";
 
 // NEW IMAGES
@@ -72,7 +71,6 @@ export const ALL_IMAGES = {
   corporateInterview: imgCorporateInterview,
   teaPlantation: imgTeaPlantation,
   mlwCreatorStage: imgMlwCreatorStage,
-  wirelessStreamHall: imgWirelessStreamHall,
   lakesideStreamStation: imgLakesideStreamStation,
 
   // NEW IMAGES
@@ -305,17 +303,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     objectPos: "object-top",
   },
 
-  {
-    id: "wireless-streaming-hall",
-    src: imgWirelessStreamHall,
-    title: "Multi-Cam Broadcast Command Desk",
-    client: "Corporate Live Event",
-    alt: "Multi-monitor wireless video streaming station setup in conference hall",
-    h: "h-60",
-    category: "Events",
-    service: "Videography",
-    objectPos: "object-top",
-  },
+ 
 
   {
     id: "lakeside-stream-unit",
@@ -521,15 +509,7 @@ export const PRODUCTIONS: Production[] = [
     objectPos: "object-top",
   },
 
-  {
-    src: imgWirelessStreamHall,
-    alt: "Wireless live streaming mixing desk in conference hall",
-    title: "National Conference Live Broadcast",
-    meta: "Multi-Cam Live Streaming Setup",
-    tab: "Editorial",
-    badge: "Live Broadcast",
-    objectPos: "object-top",
-  },
+ 
 
   // NEW PRODUCTIONS
   {
@@ -578,16 +558,7 @@ export const JOURNAL_POSTS = [
       "Insights and logistics behind our local production support for 'The Boy Who Harnessed The Wind'.",
   },
 
-  {
-    title: "Designing Multi-Camera Live Streaming Rigs for Remote Events",
-    topic: "Gear",
-    date: "02 Aug 2026",
-    read: "5 min",
-    img: imgWirelessStreamHall,
-    alt: "Multi-camera live streaming mixing desk setup",
-    excerpt:
-      "How we configure wireless HDMI video links and ATEM switchers for zero-latency live feeds.",
-  },
+  
 
   {
     title: "Cinematography in High-Contrast Natural Light: Thyolo Tea Estates",

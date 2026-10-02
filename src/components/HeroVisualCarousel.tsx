@@ -61,15 +61,7 @@ const FEATURED_SLIDES = [
     image: ALL_IMAGES.mlwDocuInterview,
     objectPos: "object-top",
   },
-  {
-    shotId: "wireless-streaming-hall",
-    title: "Multi-Cam Broadcast Desk",
-    client: "Corporate Conference",
-    category: "Events",
-    tag: "Live Streaming Station",
-    image: ALL_IMAGES.wirelessStreamHall,
-    objectPos: "object-top",
-  },
+  
 ];
 
 const CLIENT_PARTNERS = [
