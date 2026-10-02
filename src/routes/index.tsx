@@ -71,7 +71,7 @@ const CATEGORIES = [
 const FEATURES = [
   {
     title: "Professionalism",
-    body: "Over two decades producing multimedia in accordance with professional ethics and standards — a crew that has stood the test of time since 2002.",
+    body: "Over two decades producing multimedia in accordance with professional ethics and standards a crew that has stood the test of time since 2002.",
   },
   {
     title: "Quality",
@@ -83,7 +83,7 @@ const FEATURES = [
   },
   {
     title: "Customization",
-    body: "A creative, dynamic and friendly team that caters for all — every production shaped around the customer's brief and budget.",
+    body: "A creative, dynamic and friendly team that caters for all every production shaped around the customer's brief and budget.",
   },
 ];
 
@@ -154,8 +154,8 @@ function Index() {
               <SlidingHeadlineText />
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Creative Works Communications produces high-impact multimedia — documentaries, TV
-              adverts, event coverage, live streaming and commercial stills — for clients
+              Creative Works Communications produces high-impact multimedia documentaries, TV
+              adverts, event coverage, live streaming and commercial stills, for clients
               across Malawi and internationally.
             </p>
           </Reveal>

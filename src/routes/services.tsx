@@ -47,7 +47,7 @@ const SERVICES: Service[] = [
     name: "TV & Video Adverts",
     type: "Video",
     blurb:
-      "Commercials and TV spots built around a clear message — including multi-language versions such as Chichewa and English.",
+      "Commercials and TV spots built around a clear message including multi-language versions such as Chichewa and English.",
     includes: ["Concept development", "Direction & filming", "Multi-language versions", "Social cutdowns"],
   },
   {
@@ -121,7 +121,7 @@ function ServicesPage() {
             What We Have For You.
           </h1>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Creative Works Communications offers an array of multimedia products and services — from
+            Creative Works Communications offers an array of multimedia products and services from
             documentaries and TV adverts to photography, live streaming and graphic design.
           </p>
         </Reveal>
