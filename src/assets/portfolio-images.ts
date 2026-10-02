@@ -40,6 +40,7 @@ export type Shot = {
   h: string;
   category: string;
   service: "Photography" | "Videography" | "Aerial";
+  objectPos?: string;
 };
 
 export type Production = {
@@ -49,6 +50,7 @@ export type Production = {
   meta: string;
   tab: string;
   badge?: string;
+  objectPos?: string;
 };
 
 export const ALL_IMAGES = {
@@ -96,6 +98,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Travel",
     service: "Aerial",
+    objectPos: "object-center",
   },
 
   {
@@ -107,6 +110,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-72",
     category: "Events",
     service: "Aerial",
+    objectPos: "object-center",
   },
 
   {
@@ -118,6 +122,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -129,6 +134,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Brand Films",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -140,6 +146,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Editorial",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -151,6 +158,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Products",
     service: "Photography",
+    objectPos: "object-top",
   },
 
   {
@@ -162,6 +170,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-48",
     category: "Products",
     service: "Photography",
+    objectPos: "object-center",
   },
 
   {
@@ -173,6 +182,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Editorial",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -184,6 +194,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-72",
     category: "Portraits",
     service: "Photography",
+    objectPos: "object-top",
   },
 
   {
@@ -195,6 +206,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Editorial",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -206,6 +218,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -217,6 +230,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -228,6 +242,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-72",
     category: "Portraits",
     service: "Photography",
+    objectPos: "object-top",
   },
 
   {
@@ -239,6 +254,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Brand Films",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -250,6 +266,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Photography",
+    objectPos: "object-top",
   },
 
   {
@@ -261,6 +278,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Brand Films",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -272,6 +290,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Travel",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -283,6 +302,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-56",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -294,6 +314,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-60",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   {
@@ -305,6 +326,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Events",
     service: "Videography",
+    objectPos: "object-top",
   },
 
   // =========================================================
@@ -430,6 +452,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Hollywood Feature Support · Production Crew",
     tab: "Brand Films",
     badge: "Feature Support",
+    objectPos: "object-top",
   },
 
   {
@@ -439,6 +462,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "TV Programs & Documentaries · 2025-2026",
     tab: "Brand Films",
     badge: "TV Broadcast",
+    objectPos: "object-top",
   },
 
   {
@@ -447,6 +471,7 @@ export const PRODUCTIONS: Production[] = [
     title: "Thyolo Estate Brand Film",
     meta: "Commercial Cinematography · Location Shoot",
     tab: "Brand Films",
+    objectPos: "object-top",
   },
 
   {
@@ -456,6 +481,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Aerial Coverage & Highlights · FCB",
     tab: "commercial",
     badge: "Aerial",
+    objectPos: "object-center",
   },
 
   {
@@ -464,6 +490,7 @@ export const PRODUCTIONS: Production[] = [
     title: "First Capital Bank 30th Gala",
     meta: "Corporate Event Photography",
     tab: "commercial",
+    objectPos: "object-top",
   },
 
   {
@@ -472,6 +499,7 @@ export const PRODUCTIONS: Production[] = [
     title: "Mulanje Massif Expedition",
     meta: "Aerial Photography & Landscape Stills",
     tab: "commercial",
+    objectPos: "object-center",
   },
 
   {
@@ -481,6 +509,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Field Documentary · 5+ Year Partnership",
     tab: "Editorial",
     badge: "Documentary",
+    objectPos: "object-top",
   },
 
   {
@@ -489,6 +518,7 @@ export const PRODUCTIONS: Production[] = [
     title: "Community Voices Malawi",
     meta: "Multi-Cam Field Production",
     tab: "Editorial",
+    objectPos: "object-top",
   },
 
   {
@@ -498,6 +528,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Multi-Cam Live Streaming Setup",
     tab: "Editorial",
     badge: "Live Broadcast",
+    objectPos: "object-top",
   },
 
   // NEW PRODUCTIONS

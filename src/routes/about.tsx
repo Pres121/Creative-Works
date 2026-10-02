@@ -159,7 +159,7 @@ function AboutPage() {
                       src={photo.src}
                       alt={photo.title}
                       loading="lazy"
-                      className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="p-4">
                       <p className="text-sm font-bold">{photo.title}</p>

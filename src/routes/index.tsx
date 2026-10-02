@@ -114,12 +114,19 @@ const INITIAL_PORTFOLIO_COUNT = 8;
 
 function Index() {
   const [expanded, setExpanded] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [featuredTab, setFeaturedTab] = useState("Brand Films");
   const [activeShot, setActiveShot] = useState<Shot | null>(null);
 
+  const filteredShots = useMemo(() => {
+    return PORTFOLIO_GALLERY.filter(
+      (s) => activeCategory === "All" || s.category === activeCategory
+    );
+  }, [activeCategory]);
+
   const visibleShots = useMemo(() => {
-    return expanded ? PORTFOLIO_GALLERY : PORTFOLIO_GALLERY.slice(0, INITIAL_PORTFOLIO_COUNT);
-  }, [expanded]);
+    return expanded ? filteredShots : filteredShots.slice(0, INITIAL_PORTFOLIO_COUNT);
+  }, [expanded, filteredShots]);
 
   const columns = useMemo(() => {
     const cols: Shot[][] = [[], [], [], []];
@@ -194,11 +201,31 @@ function Index() {
           <h2 className="text-3xl font-bold md:text-4xl">Explore The Portfolio</h2>
           <p className="mt-1 text-xs text-muted-foreground">
             Displaying <strong className="text-foreground">{visibleShots.length}</strong> of{" "}
-            <strong className="text-foreground">{PORTFOLIO_GALLERY.length}</strong> production stills
+            <strong className="text-foreground">{filteredShots.length}</strong> production stills
           </p>
+
+          {/* Category Filter Chips */}
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setExpanded(false);
+                }}
+                className={`rounded-full px-4 py-1.5 text-xs font-medium btn-motion ${
+                  activeCategory === cat
+                    ? "brand-gradient tab-pop text-brand-foreground shadow-sm"
+                    : "border border-border text-muted-foreground hover:text-foreground hover:border-brand/30"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 page-enter sm:grid-cols-2 md:grid-cols-4">
+        <div key={activeCategory} className="mt-8 grid grid-cols-1 gap-4 page-enter sm:grid-cols-2 md:grid-cols-4">
           {columns.map((col, i) => (
             <div key={i} className="flex flex-col gap-4">
               {col.map((img) => (
@@ -211,7 +238,7 @@ function Index() {
                     src={img.src}
                     alt={img.alt}
                     loading="lazy"
-                    className={`w-full ${img.h} object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
+                    className={`w-full ${img.h} object-cover ${img.objectPos || "object-top"} transition-transform duration-700 ease-out group-hover:scale-105`}
                   />
 
                   {/* Top badge */}
@@ -242,24 +269,26 @@ function Index() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-3">
-          {!expanded ? (
-            <button
-              onClick={() => setExpanded(true)}
-              className="group inline-flex items-center gap-2 rounded-full brand-gradient px-8 py-4 text-sm font-bold text-brand-foreground btn-motion brand-glow"
-            >
-              <span>Show More Work ({PORTFOLIO_GALLERY.length - INITIAL_PORTFOLIO_COUNT} more stills)</span>
-              <span className="text-base transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
-            </button>
-          ) : (
-            <button
-              onClick={() => setExpanded(false)}
-              className="rounded-full border border-border px-6 py-2.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-brand hover:text-brand"
-            >
-              Show Less ↑
-            </button>
-          )}
-        </div>
+        {filteredShots.length > INITIAL_PORTFOLIO_COUNT && (
+          <div className="mt-12 flex flex-col items-center justify-center gap-3">
+            {!expanded ? (
+              <button
+                onClick={() => setExpanded(true)}
+                className="group inline-flex items-center gap-2 rounded-full brand-gradient px-8 py-4 text-sm font-bold text-brand-foreground btn-motion brand-glow"
+              >
+                <span>Show More Work ({filteredShots.length - INITIAL_PORTFOLIO_COUNT} more stills)</span>
+                <span className="text-base transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setExpanded(false)}
+                className="rounded-full border border-border px-6 py-2.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-brand hover:text-brand"
+              >
+                Show Less ↑
+              </button>
+            )}
+          </div>
+        )}
       </section>
 
       {/* Recent productions */}
@@ -270,17 +299,21 @@ function Index() {
             <h2 className="mt-2 text-4xl font-bold md:text-5xl">Featured Productions</h2>
           </div>
           <div className="flex gap-2">
-            {["Brand Films", "commercial", "Editorial"].map((t) => (
+            {[
+              { id: "Brand Films", label: "Brand Films" },
+              { id: "commercial", label: "Commercial" },
+              { id: "Editorial", label: "Editorial" },
+            ].map((t) => (
               <button
-                key={t}
-                onClick={() => setFeaturedTab(t)}
+                key={t.id}
+                onClick={() => setFeaturedTab(t.id)}
                 className={`rounded-full px-4 py-1.5 text-xs font-medium btn-motion ${
-                  featuredTab === t
+                  featuredTab === t.id
                     ? "brand-gradient tab-pop text-brand-foreground"
                     : "border border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {t}
+                {t.label}
               </button>
             ))}
           </div>
@@ -353,12 +386,14 @@ function AssetCard({
   badge,
   title,
   meta,
+  objectPos,
 }: {
   src: string;
   alt: string;
   badge?: string;
   title: string;
   meta: string;
+  objectPos?: string;
 }) {
   return (
     <figure className="group relative overflow-hidden rounded-3xl soft-card border border-border/60">
@@ -366,7 +401,7 @@ function AssetCard({
         src={src}
         alt={alt}
         loading="lazy"
-        className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className={`h-64 w-full object-cover ${objectPos || "object-top"} transition-transform duration-500 group-hover:scale-105`}
       />
 
       {badge && (

@@ -153,23 +153,35 @@ function ServicesPage() {
             {list.map((s) => (
               <article
                 key={s.name}
-                className="soft-card h-full rounded-3xl p-7 transition-transform duration-300 hover:-translate-y-1"
+                className="group soft-card flex flex-col justify-between h-full rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-xl"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <span className="rounded-full bg-brand/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-brand">
-                    {s.type}
-                  </span>
+                <div>
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="rounded-full bg-brand/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand">
+                      {s.type}
+                    </span>
+                  </div>
+                  <h2 className="mt-5 text-xl font-bold leading-snug text-foreground">{s.name}</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
+                  <ul className="mt-5 space-y-2 border-t border-border/50 pt-4">
+                    {s.includes.map((i) => (
+                      <li key={i} className="flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                        <span className="mt-1 size-1.5 shrink-0 rounded-full bg-brand" />
+                        {i}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h2 className="mt-5 text-lg font-bold">{s.name}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
-                <ul className="mt-4 space-y-1.5">
-                  {s.includes.map((i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
-                      {i}
-                    </li>
-                  ))}
-                </ul>
+
+                <div className="mt-7 pt-4 border-t border-border/40 flex items-center justify-between">
+                  <Link
+                    to="/book"
+                    className="inline-flex items-center gap-1.5 rounded-full brand-gradient px-4 py-2 text-xs font-bold text-brand-foreground btn-motion shadow-xs"
+                  >
+                    <span>Book {s.type}</span>
+                    <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
