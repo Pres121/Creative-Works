@@ -62,7 +62,7 @@ export function SiteHeader() {
             <img
               src="/cw-logo.png"
               alt="Creative Works logo"
-              className="relative block h-10 w-auto shrink-0 transition-all duration-300 group-hover:scale-[1.05] md:h-12 animate-logo-glow"
+              className="relative block h-12 w-auto shrink-0 transition-all duration-300 group-hover:scale-[1.05] md:h-14 animate-logo-glow"
             />
 
             <div className="relative flex flex-col justify-center leading-tight">

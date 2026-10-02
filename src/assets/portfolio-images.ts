@@ -1,4 +1,3 @@
-
 import imgMulanjeAerial from "@/assets/DJI_0311.JPG.jpeg";
 import imgFCBAerial from "@/assets/DJI_0699.jpg.jpeg";
 import imgIctamConference from "@/assets/3c925d3847e74f538f90538846ddd082.jpg.jpeg";
@@ -19,6 +18,18 @@ import imgTeaPlantation from "@/assets/IMG_20250818_181646_061.jpg.jpeg";
 import imgMlwCreatorStage from "@/assets/IMG_20251010_104505_368.jpg.jpeg";
 import imgWirelessStreamHall from "@/assets/IMG_20251112_165827_788.jpg.jpeg";
 import imgLakesideStreamStation from "@/assets/IMG_20260307_133830_943.jpg.jpeg";
+
+// NEW IMAGES
+import imgEvent0016 from "@/assets/IMG-20260930-WA0016.jpg.jpeg";
+import imgEvent0019 from "@/assets/IMG-20260930-WA0019.jpg.jpeg";
+import imgEvent0023 from "@/assets/IMG-20260930-WA0023.jpg.jpeg";
+import imgKumudzi from "@/assets/kumudzi1.jpeg";
+import imgMshootin from "@/assets/mshootin.jpeg";
+import imgOffice1 from "@/assets/office1.jpeg";
+import imgOffice2 from "@/assets/office2.jpeg";
+import imgSabbath from "@/assets/sabbath.jpeg";
+import imgAgm from "@/assets/agm.jpeg";
+import imgGround1 from "@/assets/ground1.jpeg";
 
 export type Shot = {
   id: string;
@@ -61,6 +72,18 @@ export const ALL_IMAGES = {
   mlwCreatorStage: imgMlwCreatorStage,
   wirelessStreamHall: imgWirelessStreamHall,
   lakesideStreamStation: imgLakesideStreamStation,
+
+  // NEW IMAGES
+  event0016: imgEvent0016,
+  event0019: imgEvent0019,
+  event0023: imgEvent0023,
+  kumudzi: imgKumudzi,
+  mshootin: imgMshootin,
+  office1: imgOffice1,
+  office2: imgOffice2,
+  sabbath: imgSabbath,
+  agm: imgAgm,
+  ground1: imgGround1,
 };
 
 export const PORTFOLIO_GALLERY: Shot[] = [
@@ -74,6 +97,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Travel",
     service: "Aerial",
   },
+
   {
     id: "fcb-stadium-drone",
     src: imgFCBAerial,
@@ -84,6 +108,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Aerial",
   },
+
   {
     id: "ictam-women-conf",
     src: imgIctamConference,
@@ -94,6 +119,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Videography",
   },
+
   {
     id: "boy-harnessed-wind",
     src: imgHollywoodForest,
@@ -104,6 +130,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Brand Films",
     service: "Videography",
   },
+
   {
     id: "mlw-docu-interview",
     src: imgMlwDocuInterview,
@@ -114,6 +141,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Editorial",
     service: "Videography",
   },
+
   {
     id: "factory-production",
     src: imgFactoryWorker,
@@ -124,6 +152,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Products",
     service: "Photography",
   },
+
   {
     id: "textile-macro",
     src: imgTextileDetail,
@@ -134,6 +163,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Products",
     service: "Photography",
   },
+
   {
     id: "rural-field-docu",
     src: imgVillageFieldDocu,
@@ -144,6 +174,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Editorial",
     service: "Videography",
   },
+
   {
     id: "mlw-campus-portrait",
     src: imgMlwCampusPortrait,
@@ -154,6 +185,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Portraits",
     service: "Photography",
   },
+
   {
     id: "multicam-field-crew",
     src: imgVillageMultiCam,
@@ -164,6 +196,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Editorial",
     service: "Videography",
   },
+
   {
     id: "illovo-gimbal-op",
     src: imgIllovoGimbal,
@@ -174,6 +207,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Videography",
   },
+
   {
     id: "live-stream-atem",
     src: imgAtemLiveStream,
@@ -184,6 +218,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Videography",
   },
+
   {
     id: "studio-lighting-rig",
     src: imgStudioSoftbox,
@@ -194,6 +229,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Portraits",
     service: "Photography",
   },
+
   {
     id: "tv-studio-set",
     src: imgTvStudioSet,
@@ -204,6 +240,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Brand Films",
     service: "Videography",
   },
+
   {
     id: "fcb-30th-anniversary",
     src: imgFCBAnniversary,
@@ -214,6 +251,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Photography",
   },
+
   {
     id: "corporate-interview-gimbal",
     src: imgCorporateInterview,
@@ -224,6 +262,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Brand Films",
     service: "Videography",
   },
+
   {
     id: "tea-plantation-cinema",
     src: imgTeaPlantation,
@@ -234,6 +273,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Travel",
     service: "Videography",
   },
+
   {
     id: "mlw-creator-stage",
     src: imgMlwCreatorStage,
@@ -244,6 +284,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Videography",
   },
+
   {
     id: "wireless-streaming-hall",
     src: imgWirelessStreamHall,
@@ -254,6 +295,7 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     category: "Events",
     service: "Videography",
   },
+
   {
     id: "lakeside-stream-unit",
     src: imgLakesideStreamStation,
@@ -263,6 +305,120 @@ export const PORTFOLIO_GALLERY: Shot[] = [
     h: "h-64",
     category: "Events",
     service: "Videography",
+  },
+
+  // =========================================================
+  // NEW PORTFOLIO IMAGES
+  // =========================================================
+
+  {
+    id: "event-wa0016",
+    src: imgEvent0016,
+    title: "Event Coverage",
+    client: "Corporate Event",
+    alt: "Professional event photography coverage",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0019",
+    src: imgEvent0019,
+    title: "Event Moments",
+    client: "Event Production",
+    alt: "Professional event photography and coverage",
+    h: "h-60",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0023",
+    src: imgEvent0023,
+    title: "Event Production",
+    client: "Corporate Event",
+    alt: "Professional photography during a corporate event",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "kumudzi-documentary",
+    src: imgKumudzi,
+    title: "Kumudzi Documentary",
+    client: "Documentary Production",
+    alt: "Documentary production captured in a rural community setting",
+    h: "h-64",
+    category: "Editorial",
+    service: "Videography",
+  },
+
+  {
+    id: "mshootin-production",
+    src: imgMshootin,
+    title: "On-Location Production",
+    client: "Creative Production",
+    alt: "Behind-the-scenes production shoot",
+    h: "h-60",
+    category: "Brand Films",
+    service: "Videography",
+  },
+
+  {
+    id: "office-corporate-one",
+    src: imgOffice1,
+    title: "Corporate Office Shoot",
+    client: "Corporate Client",
+    alt: "Professional corporate photography session in an office",
+    h: "h-64",
+    category: "Portraits",
+    service: "Photography",
+  },
+
+  {
+    id: "office-corporate-two",
+    src: imgOffice2,
+    title: "Office Brand Photography",
+    client: "Corporate Client",
+    alt: "Professional office photography and corporate branding shoot",
+    h: "h-64",
+    category: "Products",
+    service: "Photography",
+  },
+
+  {
+    id: "sabbath-event",
+    src: imgSabbath,
+    title: "Sabbath Event Coverage",
+    client: "Event Coverage",
+    alt: "Professional photography coverage at a Sabbath event",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "agm-event",
+    src: imgAgm,
+    title: "Annual General Meeting",
+    client: "Corporate Event",
+    alt: "Professional photography coverage at an annual general meeting",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "ground-event",
+    src: imgGround1,
+    title: "Outdoor Event Coverage",
+    client: "Event Production",
+    alt: "Outdoor event photography and production coverage",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
   },
 ];
 
@@ -275,6 +431,7 @@ export const PRODUCTIONS: Production[] = [
     tab: "Brand Films",
     badge: "Feature Support",
   },
+
   {
     src: imgTvStudioSet,
     alt: "TV Studio set with presenter and production clapperboard",
@@ -283,6 +440,7 @@ export const PRODUCTIONS: Production[] = [
     tab: "Brand Films",
     badge: "TV Broadcast",
   },
+
   {
     src: imgTeaPlantation,
     alt: "Tea estate video shoot with reflector and mountain backdrop",
@@ -290,6 +448,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Commercial Cinematography · Location Shoot",
     tab: "Brand Films",
   },
+
   {
     src: imgFCBAerial,
     alt: "Aerial drone shot of First Capital Bank Stadium crowd",
@@ -298,6 +457,7 @@ export const PRODUCTIONS: Production[] = [
     tab: "commercial",
     badge: "Aerial",
   },
+
   {
     src: imgFCBAnniversary,
     alt: "First Capital Bank 30th anniversary backdrop",
@@ -305,6 +465,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Corporate Event Photography",
     tab: "commercial",
   },
+
   {
     src: imgMulanjeAerial,
     alt: "Mulanje Mountain drone view",
@@ -312,6 +473,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Aerial Photography & Landscape Stills",
     tab: "commercial",
   },
+
   {
     src: imgMlwDocuInterview,
     alt: "Malawi Liverpool Wellcome field interview shoot",
@@ -320,6 +482,7 @@ export const PRODUCTIONS: Production[] = [
     tab: "Editorial",
     badge: "Documentary",
   },
+
   {
     src: imgVillageMultiCam,
     alt: "Multi-camera village documentary production",
@@ -327,6 +490,7 @@ export const PRODUCTIONS: Production[] = [
     meta: "Multi-Cam Field Production",
     tab: "Editorial",
   },
+
   {
     src: imgWirelessStreamHall,
     alt: "Wireless live streaming mixing desk in conference hall",
@@ -334,6 +498,40 @@ export const PRODUCTIONS: Production[] = [
     meta: "Multi-Cam Live Streaming Setup",
     tab: "Editorial",
     badge: "Live Broadcast",
+  },
+
+  // NEW PRODUCTIONS
+  {
+    src: imgKumudzi,
+    alt: "Documentary production in a rural community",
+    title: "Kumudzi Documentary",
+    meta: "Documentary Production · Field Shoot",
+    tab: "Editorial",
+    badge: "Documentary",
+  },
+
+  {
+    src: imgMshootin,
+    alt: "On-location creative production shoot",
+    title: "On-Location Production",
+    meta: "Creative Production · Location Shoot",
+    tab: "Brand Films",
+  },
+
+  {
+    src: imgEvent0016,
+    alt: "Professional corporate event coverage",
+    title: "Corporate Event Coverage",
+    meta: "Event Photography · Professional Coverage",
+    tab: "commercial",
+  },
+
+  {
+    src: imgAgm,
+    alt: "Annual general meeting photography",
+    title: "Annual General Meeting",
+    meta: "Corporate Event Photography",
+    tab: "commercial",
   },
 ];
 
@@ -345,8 +543,10 @@ export const JOURNAL_POSTS = [
     read: "6 min",
     img: imgHollywoodForest,
     alt: "Behind-the-scenes film crew in forest setting",
-    excerpt: "Insights and logistics behind our local production support for 'The Boy Who Harnessed The Wind'.",
+    excerpt:
+      "Insights and logistics behind our local production support for 'The Boy Who Harnessed The Wind'.",
   },
+
   {
     title: "Designing Multi-Camera Live Streaming Rigs for Remote Events",
     topic: "Gear",
@@ -354,8 +554,10 @@ export const JOURNAL_POSTS = [
     read: "5 min",
     img: imgWirelessStreamHall,
     alt: "Multi-camera live streaming mixing desk setup",
-    excerpt: "How we configure wireless HDMI video links and ATEM switchers for zero-latency live feeds.",
+    excerpt:
+      "How we configure wireless HDMI video links and ATEM switchers for zero-latency live feeds.",
   },
+
   {
     title: "Cinematography in High-Contrast Natural Light: Thyolo Tea Estates",
     topic: "Lighting",
@@ -363,8 +565,10 @@ export const JOURNAL_POSTS = [
     read: "4 min",
     img: imgTeaPlantation,
     alt: "Tea plantation shoot with reflector disc",
-    excerpt: "Balancing harsh mid-day sunlight using large diffusers and silver bounces in mountain terrain.",
+    excerpt:
+      "Balancing harsh mid-day sunlight using large diffusers and silver bounces in mountain terrain.",
   },
+
   {
     title: "5 Years of Documenting Impact: Partnering with MLW",
     topic: "Behind The Scenes",
@@ -372,8 +576,10 @@ export const JOURNAL_POSTS = [
     read: "7 min",
     img: imgMlwDocuInterview,
     alt: "MLW field documentary crew interviewing participant",
-    excerpt: "Building trust and capturing authentic stories across medical research field sites in Malawi.",
+    excerpt:
+      "Building trust and capturing authentic stories across medical research field sites in Malawi.",
   },
+
   {
     title: "Studio Lighting Masterclass: Softboxes vs Direct Keying",
     topic: "Lighting",
@@ -381,8 +587,10 @@ export const JOURNAL_POSTS = [
     read: "4 min",
     img: imgStudioSoftbox,
     alt: "Studio photography softbox rig and camera setup",
-    excerpt: "Why softbox modifiers create timeless skin tones for executive corporate portraiture.",
+    excerpt:
+      "Why softbox modifiers create timeless skin tones for executive corporate portraiture.",
   },
+
   {
     title: "Aerial Cinematography over Malawi: Wind, Elevation & Frame Rates",
     topic: "Post",
@@ -390,6 +598,7 @@ export const JOURNAL_POSTS = [
     read: "5 min",
     img: imgMulanjeAerial,
     alt: "Mulanje Mountain aerial drone shot",
-    excerpt: "Navigating mountain updrafts and choosing the right shutter angles for ultra-smooth drone passes.",
+    excerpt:
+      "Navigating mountain updrafts and choosing the right shutter angles for ultra-smooth drone passes.",
   },
 ];
