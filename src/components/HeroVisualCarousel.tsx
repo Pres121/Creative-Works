@@ -61,7 +61,42 @@ const FEATURED_SLIDES = [
     image: ALL_IMAGES.mlwDocuInterview,
     objectPos: "object-top",
   },
-  
+  {
+    shotId: "event-wa0014",
+    title: "Corporate Event Coverage",
+    client: "Event Production",
+    category: "Events",
+    tag: "Professional Event Stills",
+    image: ALL_IMAGES.event0014,
+    objectPos: "object-center",
+  },
+  {
+    shotId: "event-wa0017",
+    title: "Event Coverage Showcase",
+    client: "Corporate Client",
+    category: "Events",
+    tag: "Live Coverage",
+    image: ALL_IMAGES.event0017,
+    objectPos: "object-top",
+  },
+  {
+    shotId: "event-wa0029",
+    title: "Conference & Networking Stills",
+    client: "Business Event",
+    category: "Events",
+    tag: "Candid Coverage",
+    image: ALL_IMAGES.event0029,
+    objectPos: "object-center",
+  },
+  {
+    shotId: "event-wa0033",
+    title: "Corporate Event Closeout",
+    client: "Event Production",
+    category: "Events",
+    tag: "Final Frame",
+    image: ALL_IMAGES.event0033,
+    objectPos: "object-top",
+  },
 ];
 
 const CLIENT_PARTNERS = [

@@ -19,9 +19,26 @@ import imgMlwCreatorStage from "@/assets/IMG_20251010_104505_368.jpg.jpeg";
 import imgLakesideStreamStation from "@/assets/IMG_20260307_133830_943.jpg.jpeg";
 
 // NEW IMAGES
-import imgEvent0016 from "@/assets/IMG-20260930-WA0016.jpg.jpeg";
-import imgEvent0019 from "@/assets/IMG-20260930-WA0019.jpg.jpeg";
-import imgEvent0023 from "@/assets/IMG-20260930-WA0023.jpg.jpeg";
+import imgEvent0014 from "@/assets/Portfolio_images/IMG-20260930-WA0014.jpg.jpeg";
+import imgEvent0015 from "@/assets/Portfolio_images/IMG-20260930-WA0015.jpg.jpeg";
+import imgEvent0016 from "@/assets/Portfolio_images/IMG-20260930-WA0016.jpg.jpeg";
+import imgEvent0017 from "@/assets/Portfolio_images/IMG-20260930-WA0017.jpg.jpeg";
+import imgEvent0018 from "@/assets/Portfolio_images/IMG-20260930-WA0018.jpg.jpeg";
+import imgEvent0019 from "@/assets/Portfolio_images/IMG-20260930-WA0019.jpg.jpeg";
+import imgEvent0020 from "@/assets/Portfolio_images/IMG-20260930-WA0020.jpg.jpeg";
+import imgEvent0021 from "@/assets/Portfolio_images/IMG-20260930-WA0021.jpg.jpeg";
+import imgEvent0022 from "@/assets/Portfolio_images/IMG-20260930-WA0022.jpg.jpeg";
+import imgEvent0023 from "@/assets/Portfolio_images/IMG-20260930-WA0023.jpg.jpeg";
+import imgEvent0024 from "@/assets/Portfolio_images/IMG-20260930-WA0024.jpg.jpeg";
+import imgEvent0025 from "@/assets/Portfolio_images/IMG-20260930-WA0025.jpg.jpeg";
+import imgEvent0026 from "@/assets/Portfolio_images/IMG-20260930-WA0026.jpg.jpeg";
+import imgEvent0027 from "@/assets/Portfolio_images/IMG-20260930-WA0027.jpg.jpeg";
+import imgEvent0028 from "@/assets/Portfolio_images/IMG-20260930-WA0028.jpg.jpeg";
+import imgEvent0029 from "@/assets/Portfolio_images/IMG-20260930-WA0029.jpg.jpeg";
+import imgEvent0030 from "@/assets/Portfolio_images/IMG-20260930-WA0030.jpg.jpeg";
+import imgEvent0031 from "@/assets/Portfolio_images/IMG-20260930-WA0031.jpg.jpeg";
+import imgEvent0032 from "@/assets/Portfolio_images/IMG-20260930-WA0032.jpg.jpeg";
+import imgEvent0033 from "@/assets/Portfolio_images/IMG-20260930-WA0033.jpg.jpeg";
 import imgKumudzi from "@/assets/kumudzi1.jpeg";
 import imgMshootin from "@/assets/mshootin.jpeg";
 import imgOffice1 from "@/assets/office1.jpeg";
@@ -74,9 +91,26 @@ export const ALL_IMAGES = {
   lakesideStreamStation: imgLakesideStreamStation,
 
   // NEW IMAGES
+  event0014: imgEvent0014,
+  event0015: imgEvent0015,
   event0016: imgEvent0016,
+  event0017: imgEvent0017,
+  event0018: imgEvent0018,
   event0019: imgEvent0019,
+  event0020: imgEvent0020,
+  event0021: imgEvent0021,
+  event0022: imgEvent0022,
   event0023: imgEvent0023,
+  event0024: imgEvent0024,
+  event0025: imgEvent0025,
+  event0026: imgEvent0026,
+  event0027: imgEvent0027,
+  event0028: imgEvent0028,
+  event0029: imgEvent0029,
+  event0030: imgEvent0030,
+  event0031: imgEvent0031,
+  event0032: imgEvent0032,
+  event0033: imgEvent0033,
   kumudzi: imgKumudzi,
   mshootin: imgMshootin,
   office1: imgOffice1,
@@ -322,9 +356,9 @@ export const PORTFOLIO_GALLERY: Shot[] = [
   // =========================================================
 
   {
-    id: "event-wa0016",
-    src: imgEvent0016,
-    title: "Event Coverage",
+    id: "event-wa0014",
+    src: imgEvent0014,
+    title: "Event Coverage 14",
     client: "Corporate Event",
     alt: "Professional event photography coverage",
     h: "h-64",
@@ -333,9 +367,9 @@ export const PORTFOLIO_GALLERY: Shot[] = [
   },
 
   {
-    id: "event-wa0019",
-    src: imgEvent0019,
-    title: "Event Moments",
+    id: "event-wa0015",
+    src: imgEvent0015,
+    title: "Event Coverage 15",
     client: "Event Production",
     alt: "Professional event photography and coverage",
     h: "h-60",
@@ -344,11 +378,198 @@ export const PORTFOLIO_GALLERY: Shot[] = [
   },
 
   {
+    id: "event-wa0016",
+    src: imgEvent0016,
+    title: "Event Coverage 16",
+    client: "Corporate Event",
+    alt: "Professional event photography coverage",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0017",
+    src: imgEvent0017,
+    title: "Event Coverage 17",
+    client: "Corporate Event",
+    alt: "Professional corporate event still",
+    h: "h-56",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0018",
+    src: imgEvent0018,
+    title: "Event Coverage 18",
+    client: "Event Production",
+    alt: "Event coverage still from a live production",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0019",
+    src: imgEvent0019,
+    title: "Event Coverage 19",
+    client: "Event Production",
+    alt: "Professional event photography and coverage",
+    h: "h-60",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0020",
+    src: imgEvent0020,
+    title: "Event Coverage 20",
+    client: "Corporate Event",
+    alt: "Event photograpy coverage at a professional gathering",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0021",
+    src: imgEvent0021,
+    title: "Event Coverage 21",
+    client: "Corporate Event",
+    alt: "Professional event still from a corporate function",
+    h: "h-56",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0022",
+    src: imgEvent0022,
+    title: "Event Coverage 22",
+    client: "Event Production",
+    alt: "Event production photography coverage",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
     id: "event-wa0023",
     src: imgEvent0023,
-    title: "Event Production",
+    title: "Event Coverage 23",
     client: "Corporate Event",
     alt: "Professional photography during a corporate event",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0024",
+    src: imgEvent0024,
+    title: "Event Coverage 24",
+    client: "Corporate Event",
+    alt: "Corporate event still in a busy venue",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0025",
+    src: imgEvent0025,
+    title: "Event Coverage 25",
+    client: "Event Production",
+    alt: "Professional coverage of an event audience",
+    h: "h-60",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0026",
+    src: imgEvent0026,
+    title: "Event Coverage 26",
+    client: "Corporate Event",
+    alt: "Professional event still during an event setup",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0027",
+    src: imgEvent0027,
+    title: "Event Coverage 27",
+    client: "Event Production",
+    alt: "Event production photography capture",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0028",
+    src: imgEvent0028,
+    title: "Event Coverage 28",
+    client: "Corporate Event",
+    alt: "Quiet professional still from a corporate event",
+    h: "h-56",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0029",
+    src: imgEvent0029,
+    title: "Event Coverage 29",
+    client: "Event Production",
+    alt: "Event photography coverage in an intimate venue",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0030",
+    src: imgEvent0030,
+    title: "Event Coverage 30",
+    client: "Corporate Event",
+    alt: "Professional still from a corporate event",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0031",
+    src: imgEvent0031,
+    title: "Event Coverage 31",
+    client: "Event Production",
+    alt: "Event production and coverage closeup",
+    h: "h-60",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0032",
+    src: imgEvent0032,
+    title: "Event Coverage 32",
+    client: "Corporate Event",
+    alt: "Professional event photo from a gala or conference",
+    h: "h-64",
+    category: "Events",
+    service: "Photography",
+  },
+
+  {
+    id: "event-wa0033",
+    src: imgEvent0033,
+    title: "Event Coverage 33",
+    client: "Event Production",
+    alt: "Final event coverage still from the production set",
     h: "h-64",
     category: "Events",
     service: "Photography",
