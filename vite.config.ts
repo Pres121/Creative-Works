@@ -7,7 +7,7 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  nitro: false,
+  nitro: { preset: "netlify_static" },
   tanstackStart: {
     prerender: {
       enabled: true,
