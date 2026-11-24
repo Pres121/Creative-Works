@@ -21,8 +21,10 @@ export const Route = createFileRoute("/journal")({
           "Lighting breakdowns, gear notes and production diaries from our photography and videography shoots.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.creativeworksmw.com/journal" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.creativeworksmw.com/journal" }],
   }),
   component: JournalPage,
 });

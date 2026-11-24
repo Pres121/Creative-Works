@@ -52,8 +52,10 @@ export const Route = createFileRoute("/")({
           "Brand films, campaign stills and event coverage by Creative Works Communications. View the portfolio and book a shoot.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.creativeworksmw.com/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.creativeworksmw.com/" }],
   }),
   component: Index,
 });

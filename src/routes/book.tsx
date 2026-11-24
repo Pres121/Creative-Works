@@ -21,8 +21,10 @@ export const Route = createFileRoute("/book")({
           "Tell us about your shoot and we'll come back with a crew, a schedule and a fixed price within one working day.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.creativeworksmw.com/book" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.creativeworksmw.com/book" }],
   }),
   component: BookPage,
 });

@@ -20,8 +20,10 @@ export const Route = createFileRoute("/services")({
           "Multimedia production services: documentaries, TV and radio adverts, event videography, live streaming, photography and graphic design.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.creativeworksmw.com/services" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.creativeworksmw.com/services" }],
   }),
   component: ServicesPage,
 });

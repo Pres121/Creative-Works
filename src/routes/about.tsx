@@ -22,8 +22,10 @@ export const Route = createFileRoute("/about")({
           "Facts about Creative Works Communications — a Malawian multimedia production house producing TV programmes, documentaries, adverts, photography and live streaming since 2002.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.creativeworksmw.com/about" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.creativeworksmw.com/about" }],
   }),
   component: AboutPage,
 });
